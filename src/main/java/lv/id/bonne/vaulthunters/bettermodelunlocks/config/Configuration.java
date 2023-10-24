@@ -27,6 +27,11 @@ public class Configuration
             comment("Trinkets has value 0.16666667F").
             defineInRange("knownModelPunishment", 0.16666667F, 0.0d, 1.0d);
 
+        this.experimentalUnlocks = builder.
+            comment("The option to enable experimental, non-canon gear model unlocks.").
+            comment("By default it is disabled.").
+            define("experimentalUnlocks", false);
+
         Configuration.GENERAL_SPEC = builder.build();
     }
 
@@ -42,6 +47,17 @@ public class Configuration
     }
 
 
+    /**
+     * Gets experimental unlocks.
+     *
+     * @return the experimental unlocks.
+     */
+    public ForgeConfigSpec.ConfigValue<Boolean> getExperimentalUnlocks()
+    {
+        return this.experimentalUnlocks;
+    }
+
+
 // ---------------------------------------------------------------------
 // Section: Variables
 // ---------------------------------------------------------------------
@@ -51,6 +67,11 @@ public class Configuration
      * The config value for punishing already known gear models.
      */
     private final ForgeConfigSpec.ConfigValue<Double> punishmentValue;
+
+    /**
+     * The config value for punishing already known gear models.
+     */
+    private final ForgeConfigSpec.ConfigValue<Boolean> experimentalUnlocks;
 
     /**
      * The general config spec.

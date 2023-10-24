@@ -1,0 +1,10 @@
+{
+  "package": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.experimental",
+  "refmap": "mixins.vault_hunters_better_model_unlocks.refmap.json",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_17",
+  "plugin": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.VaultHuntersExperimentalModConfiguration",
+  "mixins": [
+    "MixinBaguetteObjective"
+  ]
+}

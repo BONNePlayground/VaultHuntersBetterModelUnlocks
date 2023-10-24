@@ -19,8 +19,6 @@ public class BetterModelUnlocks
      */
     public BetterModelUnlocks()
     {
-        BetterModelUnlocks.CONFIGURATION = new Configuration();
-
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON,
             Configuration.GENERAL_SPEC,
             MOD_ID + ".toml");
@@ -30,7 +28,7 @@ public class BetterModelUnlocks
     /**
      * The main configuration file.
      */
-    public static Configuration CONFIGURATION;
+    public static Configuration CONFIGURATION = new Configuration();
 
 
     /**
