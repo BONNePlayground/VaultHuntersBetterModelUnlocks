@@ -27,10 +27,20 @@ public class Configuration
             comment("Trinkets has value 0.16666667F").
             defineInRange("knownModelPunishment", 0.16666667F, 0.0d, 1.0d);
 
+        builder.comment("This category holds options that are experimental and not-canon.");
+        builder.push("Experimental Settings");
+
         this.experimentalUnlocks = builder.
             comment("The option to enable experimental, non-canon gear model unlocks.").
             comment("By default it is disabled.").
             define("experimentalUnlocks", false);
+
+        this.chanceToSpawnPig = builder.
+            comment("The chance to spawn pig when spawning vault fighter.").
+            comment("By default it is 1%.").
+            defineInRange("chanceToSpawnPig", 0.01F, 0.0F, 1.0F);
+
+        builder.pop();
 
         Configuration.GENERAL_SPEC = builder.build();
     }
@@ -41,9 +51,9 @@ public class Configuration
      *
      * @return the punishment value
      */
-    public ForgeConfigSpec.ConfigValue<Double> getPunishmentValue()
+    public double getPunishmentValue()
     {
-        return this.punishmentValue;
+        return this.punishmentValue.get();
     }
 
 
@@ -52,9 +62,19 @@ public class Configuration
      *
      * @return the experimental unlocks.
      */
-    public ForgeConfigSpec.ConfigValue<Boolean> getExperimentalUnlocks()
+    public boolean getExperimentalUnlocks()
     {
-        return this.experimentalUnlocks;
+        return this.experimentalUnlocks.get();
+    }
+
+
+    /**
+     * Gets chance to spawn pig when spawning vault fighter.
+     * @return the chance to spawn pig when spawning vault fighter.
+     */
+    public double getChanceToSpawnPig()
+    {
+        return this.chanceToSpawnPig.get();
     }
 
 
@@ -72,6 +92,11 @@ public class Configuration
      * The config value for punishing already known gear models.
      */
     private final ForgeConfigSpec.ConfigValue<Boolean> experimentalUnlocks;
+
+    /**
+     * The config value for chance to spawn pig when spawning vault fighter.
+     */
+    private final ForgeConfigSpec.ConfigValue<Double> chanceToSpawnPig;
 
     /**
      * The general config spec.

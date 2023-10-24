@@ -37,7 +37,7 @@ public class GearHelper
 
         // Add all items to weighted list.
         gearModelIDs.forEach(key -> weightedList.add(key, discoveredModels.contains(key) ?
-            BetterModelUnlocks.CONFIGURATION.getPunishmentValue().get() : 1.0));
+            BetterModelUnlocks.CONFIGURATION.getPunishmentValue() : 1.0));
         ResourceLocation modelKey = weightedList.getRandom().orElse(null);
 
         // Try to set model and rarity.

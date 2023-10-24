@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "plugin": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.VaultHuntersExperimentalModConfiguration",
   "mixins": [
-    "MixinBaguetteObjective"
+    "MixinBaguetteObjective",
+    "MixinSpawnVaultFighter"
   ]
 }

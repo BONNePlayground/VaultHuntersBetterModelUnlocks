@@ -47,7 +47,7 @@ public abstract class MixinBaguetteObjective
     @Inject(method = "initServer", at = @At("HEAD"))
     private void addCustomObjective(VirtualWorld world, Vault vault, CallbackInfo ci)
     {
-        if (!BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks().get())
+        if (!BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks())
         {
             // Only on experimental settings.
             return;
