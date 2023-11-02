@@ -24,8 +24,9 @@ public class Configuration
 
         this.punishmentValue = builder.
             comment("The punishment value for already known vault gear model.").
+            comment("Setting value to 1 would disable this feature.").
             comment("Trinkets has value 0.16666667F").
-            defineInRange("knownModelPunishment", 0.16666667F, 0.0d, 1.0d);
+            defineInRange("knownModelPunishment", 0.16666667F, Double.MIN_VALUE, 1.0d);
 
         builder.comment("This category holds options that are experimental and not-canon.");
         builder.push("Experimental Settings");
