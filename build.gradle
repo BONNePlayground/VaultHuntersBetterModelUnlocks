@@ -141,6 +141,8 @@ dependencies {
     implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:${vault_hunters_version}")
     implementation fg.deobf("curse.maven:cooking-for-blockheads-231484:${cooking_for_blockheads_version}")
     implementation fg.deobf("curse.maven:balm-531761:${balm_version}")
+    implementation fg.deobf("curse.maven:sophisticated-core-618298:${sophisticated_core_version}")
+    implementation fg.deobf("curse.maven:sophisticated-backpacks-422301:${sophisticated_backpacks_version}")
 
 //    Dependencies for Runtime Debug
 //    implementation fg.deobf("curse.maven:quark-243121:3840125")
@@ -151,8 +153,6 @@ dependencies {
 //    implementation fg.deobf("curse.maven:architects-palette-433862:4498424")
 //    implementation fg.deobf("curse.maven:curios-309927:4418032")
 //    implementation fg.deobf("curse.maven:autoreglib-250363:3642382")
-//    implementation fg.deobf("curse.maven:sophisticated-core-618298:4665730")
-//    implementation fg.deobf("curse.maven:sophisticated-backpacks-422301:4637292")
 //    implementation fg.deobf("curse.maven:sophisticated-backpacks-vault-hunters-edition-696425:4287544")
 //    implementation fg.deobf("curse.maven:configured-457570:4462832")
 }
