@@ -16,15 +16,19 @@ import iskallia.vault.gear.VaultGearState;
 import iskallia.vault.gear.item.IdentifiableItem;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.BetterModelUnlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.p3pp3rf1y.sophisticatedbackpacks.api.CapabilityBackpackWrapper;
 import net.p3pp3rf1y.sophisticatedbackpacks.backpack.BackpackItem;
+import net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems;
 import net.p3pp3rf1y.sophisticatedcore.inventory.ITrackedContentsItemHandler;
 
 
@@ -54,9 +58,13 @@ public class MixinIdentificationStandBlock
             return value;
         }
 
-        if (player.getMainHandItem().getItem() instanceof BackpackItem)
+        // Get item from player main hand.
+        ItemStack itemStack = player.getMainHandItem();
+
+        if (itemStack.getItem() instanceof BackpackItem)
         {
-            value |= player.getMainHandItem().
+            // Try backpack item first.
+            value |= itemStack.
                 getCapability(CapabilityBackpackWrapper.getCapabilityInstance()).
                 map(wrapper -> {
                     ITrackedContentsItemHandler inventoryForUpgradeProcessing =
@@ -68,6 +76,7 @@ public class MixinIdentificationStandBlock
                     {
                         ItemStack stackInSlot = wrapper.getInventoryForUpgradeProcessing().getStackInSlot(i);
 
+                        // Check if item is vault gear item.
                         if (stackInSlot.getCount() == 1 &&
                             stackInSlot.getItem() instanceof IdentifiableItem identifiableItem)
                         {
@@ -75,6 +84,7 @@ public class MixinIdentificationStandBlock
 
                             if (state == VaultGearState.UNIDENTIFIED)
                             {
+                                // Try to identify the item
                                 if (player instanceof ServerPlayer serverPlayer)
                                 {
                                     identifiableItem.instantIdentify(serverPlayer, stackInSlot);
@@ -88,6 +98,60 @@ public class MixinIdentificationStandBlock
                     return hasUnidentified;
                 }).
                 orElse(false);
+        }
+        else if (itemStack.getItem().getRegistryName() != null &&
+            itemStack.getItem().getRegistryName().getPath().endsWith("shulker_box"))
+        {
+            // Now try to handle shulker boxes in player inventory.
+            CompoundTag originalTag = itemStack.getTag();
+
+            // Find BlockEntityTag
+            if (originalTag != null &&
+                originalTag.contains("BlockEntityTag") &&
+                originalTag.getTagType("BlockEntityTag") == CompoundTag.TAG_COMPOUND)
+            {
+                CompoundTag blockEntityTag = originalTag.getCompound("BlockEntityTag");
+
+                // Find items in shulker box
+                if (blockEntityTag.contains("Items") &&
+                    blockEntityTag.getTagType("Items") == CompoundTag.TAG_LIST)
+                {
+                    ListTag items = blockEntityTag.getList("Items", CompoundTag.TAG_COMPOUND);
+
+                    if (!items.isEmpty())
+                    {
+                        for (int i = 0; i < items.size(); i++)
+                        {
+                            // Now for each item try to parse it.
+                            ItemStack stackInSlot = ItemStack.of(items.getCompound(i));
+
+                            if (stackInSlot.getCount() == 1 &&
+                                stackInSlot.getItem() instanceof IdentifiableItem identifiableItem)
+                            {
+                                // Parse as vault gear item.
+                                VaultGearState state = identifiableItem.getState(stackInSlot);
+
+                                if (state == VaultGearState.UNIDENTIFIED)
+                                {
+                                    // Try to identify it.
+                                    if (player instanceof ServerPlayer serverPlayer)
+                                    {
+                                        identifiableItem.instantIdentify(serverPlayer, stackInSlot);
+
+                                        if (stackInSlot.getTag() != null)
+                                        {
+                                            // Update item tag in the items list.
+                                            items.getCompound(i).put("tag", stackInSlot.getTag());
+                                        }
+                                    }
+
+                                    value = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         return value;
