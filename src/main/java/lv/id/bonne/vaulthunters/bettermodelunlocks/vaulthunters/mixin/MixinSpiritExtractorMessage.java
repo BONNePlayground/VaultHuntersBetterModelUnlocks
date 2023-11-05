@@ -35,7 +35,7 @@ public class MixinSpiritExtractorMessage
     @Inject(method = "lambda$handle$0(Lnet/minecraftforge/network/NetworkEvent$Context;Liskallia/vault/network/message/SpiritExtractorMessage;)V",
         at = @At(value = "INVOKE", target = "Liskallia/vault/block/entity/SpiritExtractorTileEntity;spewItems()V"),
         locals = LocalCapture.CAPTURE_FAILSOFT)
-    private static void handle(NetworkEvent.Context context,
+    private static void injectProperAwardNumber(NetworkEvent.Context context,
         SpiritExtractorMessage message,
         CallbackInfo ci,
         ServerPlayer serverPlayer,
