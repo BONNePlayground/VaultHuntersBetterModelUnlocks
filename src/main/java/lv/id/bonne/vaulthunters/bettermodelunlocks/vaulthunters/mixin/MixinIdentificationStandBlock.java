@@ -15,6 +15,7 @@ import iskallia.vault.block.IdentificationStandBlock;
 import iskallia.vault.gear.VaultGearState;
 import iskallia.vault.gear.item.IdentifiableItem;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.BetterModelUnlocks;
+import net.mehvahdjukaar.supplementaries.setup.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -97,8 +98,9 @@ public class MixinIdentificationStandBlock
                 }).
                 orElse(false);
         }
-        else if (itemStack.getItem().getRegistryName() != null &&
-            itemStack.getItem().getRegistryName().getPath().endsWith("shulker_box"))
+        else if ((itemStack.getItem().getRegistryName() != null &&
+            itemStack.getItem().getRegistryName().getPath().endsWith("shulker_box")) ||
+            itemStack.is(ModRegistry.SACK_ITEM.get()))
         {
             // Now try to handle shulker boxes in player inventory.
             CompoundTag originalTag = itemStack.getTag();
