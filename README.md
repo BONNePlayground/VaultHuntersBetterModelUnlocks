@@ -14,7 +14,8 @@ Custom Unique Transmogs:
 - Sword
   - [ ] nightfall
   - [ ] glorem_glipsum 
-  - [ ] honey_wand 
+  - [ ] honey_wand
+  - [x] DEATHS_DOOR (fixed)
 - Axe
   - [ ] greathammer 
   - [ ] tiny_hammer 
