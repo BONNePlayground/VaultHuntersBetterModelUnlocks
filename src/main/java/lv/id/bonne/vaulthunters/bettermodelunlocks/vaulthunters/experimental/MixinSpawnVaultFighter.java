@@ -28,7 +28,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 /**
  * This mixin changes Vault Fighter entity so it could spawn with pig, instead of chicken.
  */
-@Mixin(value = FighterEntity.class, remap = false)
+@Mixin(value = FighterEntity.class)
 public class MixinSpawnVaultFighter
 {
     /**
