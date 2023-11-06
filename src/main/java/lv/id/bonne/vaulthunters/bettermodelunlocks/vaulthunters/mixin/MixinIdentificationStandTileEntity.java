@@ -62,12 +62,11 @@ public class MixinIdentificationStandTileEntity
             boolean newValue = itemStack.
                 getCapability(CapabilityBackpackWrapper.getCapabilityInstance()).
                 map(wrapper -> {
-                    ITrackedContentsItemHandler inventoryForUpgradeProcessing =
-                        wrapper.getInventoryForUpgradeProcessing();
+                    ITrackedContentsItemHandler inventoryHandler = wrapper.getInventoryHandler();
 
-                    for (int i = 0; i < inventoryForUpgradeProcessing.getSlots(); i++)
+                    for (int i = 0; i < inventoryHandler.getSlots(); i++)
                     {
-                        ItemStack stackInSlot = wrapper.getInventoryForUpgradeProcessing().getStackInSlot(i);
+                        ItemStack stackInSlot = wrapper.getInventoryHandler().getStackInSlot(i);
 
                         if (stackInSlot.getCount() == 1 &&
                             stackInSlot.getItem() instanceof IdentifiableItem identifiableItem)

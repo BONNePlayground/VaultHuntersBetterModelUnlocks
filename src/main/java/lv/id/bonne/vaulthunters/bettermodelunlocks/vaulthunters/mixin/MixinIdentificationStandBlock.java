@@ -66,14 +66,13 @@ public class MixinIdentificationStandBlock
             value |= itemStack.
                 getCapability(CapabilityBackpackWrapper.getCapabilityInstance()).
                 map(wrapper -> {
-                    ITrackedContentsItemHandler inventoryForUpgradeProcessing =
-                        wrapper.getInventoryForUpgradeProcessing();
+                    ITrackedContentsItemHandler inventoryHandler = wrapper.getInventoryHandler();
 
                     boolean hasUnidentified = false;
 
-                    for (int i = 0; i < inventoryForUpgradeProcessing.getSlots(); i++)
+                    for (int i = 0; i < inventoryHandler.getSlots(); i++)
                     {
-                        ItemStack stackInSlot = wrapper.getInventoryForUpgradeProcessing().getStackInSlot(i);
+                        ItemStack stackInSlot = wrapper.getInventoryHandler().getStackInSlot(i);
 
                         // Check if item is vault gear item.
                         if (stackInSlot.getCount() == 1 &&
@@ -84,9 +83,10 @@ public class MixinIdentificationStandBlock
                             if (state == VaultGearState.UNIDENTIFIED)
                             {
                                 // Try to identify the item
-                                if (player instanceof ServerPlayer serverPlayer)
+                                if (!player.isLocalPlayer())
                                 {
-                                    identifiableItem.instantIdentify(serverPlayer, stackInSlot);
+                                    identifiableItem.instantIdentify(player, stackInSlot);
+                                    wrapper.getInventoryHandler().onContentsChanged(i);
                                 }
 
                                 hasUnidentified = true;
