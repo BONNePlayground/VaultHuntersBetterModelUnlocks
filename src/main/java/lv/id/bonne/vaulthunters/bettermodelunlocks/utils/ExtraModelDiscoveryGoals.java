@@ -37,7 +37,7 @@ public class ExtraModelDiscoveryGoals
          */
         MOBS_KILLED_WHILE_RIDING_PIG = registerGoal(
             new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_killed_while_riding_pig"),
-            new VaultMobKillGoal(1).
+            new VaultMobKillGoal(50).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
                 withKillerPredicate(player -> player.isPassenger() && player.getVehicle() instanceof Pig).
