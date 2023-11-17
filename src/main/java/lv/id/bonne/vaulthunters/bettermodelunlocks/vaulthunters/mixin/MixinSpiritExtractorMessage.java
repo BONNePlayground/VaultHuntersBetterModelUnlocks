@@ -33,7 +33,7 @@ public class MixinSpiritExtractorMessage
      * as spewItem() method cleared the cost.
      */
     @Inject(method = "lambda$handle$0(Lnet/minecraftforge/network/NetworkEvent$Context;Liskallia/vault/network/message/SpiritExtractorMessage;)V",
-        at = @At(value = "INVOKE", target = "Liskallia/vault/block/entity/SpiritExtractorTileEntity;spewItems()V"),
+        at = @At(value = "INVOKE", target = "iskallia/vault/block/entity/SpiritExtractorTileEntity.spewItems(Lnet/minecraft/world/entity/player/Player;)V"),
         locals = LocalCapture.CAPTURE_FAILSOFT)
     private static void injectProperAwardNumber(NetworkEvent.Context context,
         SpiritExtractorMessage message,
