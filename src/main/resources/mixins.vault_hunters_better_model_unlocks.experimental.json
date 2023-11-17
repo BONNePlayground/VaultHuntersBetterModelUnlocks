@@ -6,6 +6,7 @@
   "plugin": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.VaultHuntersExperimentalModConfiguration",
   "mixins": [
     "MixinBaguetteObjective",
+    "MixinBeeKnightObjective",
     "MixinSpawnVaultFighter",
     "MixinStructureTemplate"
   ]

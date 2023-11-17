@@ -10,7 +10,7 @@ Custom Unique Transmogs:
   - [ ] carri_king
 - Shield
   - [ ] heart_chocolate
-  - [ ] honey_drone
+  - [ ] honey_drone 
 - Sword
   - [ ] nightfall
   - [ ] glorem_glipsum 
@@ -22,10 +22,11 @@ Custom Unique Transmogs:
 - Armor
   - [x] iskall_ibe (fixed)
   - [x] cake (fixed)
+  - [x] Bumbo Cactoni (experimental)
   - [ ] hell_cow
   - [ ] penguin
   - [ ] sweet_heart
-  - [ ] bee_knight 
+  - [x] bee_knight (experimental)
   - [ ] scout 
   - [ ] jester
   - [ ] skallibomba
