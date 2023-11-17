@@ -68,7 +68,7 @@ public abstract class MixinBeeKnightObjective
             {
                 world.getNearbyPlayers(TargetingConditions.DEFAULT,
                         event.getEntityLiving(),
-                        AABB.ofSize(new Vec3(event.getX(), event.getY(), event.getZ()), 5.0d, 5.0d, 5.0d)).
+                        AABB.ofSize(new Vec3(event.getX(), event.getY(), event.getZ()), 10.0d, 10.0d, 10.0d)).
                     forEach(player ->
                     {
                         if (player instanceof ServerPlayer serverPlayer)
