@@ -40,7 +40,7 @@ public abstract class MixinStructureTemplate
      * @param tile the tile block
      * @param cir Callback info returnable
      */
-    @Inject(method = "lambda$getTiles$3(Liskallia/vault/core/world/template/PlacementSettings;Liskallia/vault/core/world/data/tile/TilePredicate;Liskallia/vault/core/world/data/tile/PartialTile;)Liskallia/vault/core/world/data/tile/PartialTile;",
+    @Inject(method = "lambda$getTiles$3",
         at = @At(value = "INVOKE_ASSIGN", target = "iskallia/vault/core/world/data/tile/PartialTile.copy()Liskallia/vault/core/world/data/tile/PartialTile;"),
         locals = LocalCapture.CAPTURE_FAILSOFT)
     private static void injectGoldenTeethIntoBamboo(PlacementSettings settings,
