@@ -48,6 +48,11 @@ public class Configuration
             comment("By default it is 1%.").
             defineInRange("chanceToSpawnPig", 0.01F, 0.0F, 1.0F);
 
+        this.chanceToSpawnTeeth = builder.
+            comment("The chance to spawn golden teeth when creating BAMBOO in Wild West Room.").
+            comment("By default it is 1%.").
+            defineInRange("chanceToSpawnTeeth", 0.01F, 0.0F, 1.0F);
+
         builder.pop();
 
         Configuration.GENERAL_SPEC = builder.build();
@@ -97,6 +102,16 @@ public class Configuration
     }
 
 
+    /**
+     * Gets chance to spawn teeth when spawning BAMBOO.
+     * @return the chance to spawn teeth when spawning BAMBOO.
+     */
+    public double getChanceToSpawnTeeth()
+    {
+        return this.chanceToSpawnTeeth.get();
+    }
+
+
 // ---------------------------------------------------------------------
 // Section: Variables
 // ---------------------------------------------------------------------
@@ -121,6 +136,11 @@ public class Configuration
      * The config value for chance to spawn pig when spawning vault fighter.
      */
     private final ForgeConfigSpec.ConfigValue<Double> chanceToSpawnPig;
+
+    /**
+     * The config value for chance to spawn golden teeth when creating BAMBOO.
+     */
+    private final ForgeConfigSpec.ConfigValue<Double> chanceToSpawnTeeth;
 
     /**
      * The general config spec.
