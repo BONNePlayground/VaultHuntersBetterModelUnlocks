@@ -24,7 +24,7 @@ Custom Unique Transmogs:
   - [x] cake (fixed)
   - [x] Bumbo Cactoni (experimental)
   - [ ] hell_cow
-  - [ ] penguin
+  - [x] penguin
   - [ ] sweet_heart
   - [x] bee_knight (experimental)
   - [ ] scout 

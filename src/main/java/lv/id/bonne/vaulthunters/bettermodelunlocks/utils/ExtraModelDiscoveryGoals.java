@@ -7,6 +7,7 @@
 package lv.id.bonne.vaulthunters.bettermodelunlocks.utils;
 
 
+import iskallia.vault.VaultMod;
 import iskallia.vault.discoverylogic.goal.VaultMobKillGoal;
 import iskallia.vault.discoverylogic.goal.base.DiscoveryGoal;
 import iskallia.vault.dynamodel.model.armor.ArmorPieceModel;
@@ -179,6 +180,115 @@ public class ExtraModelDiscoveryGoals
                             player);
                     }
                 }));
+        // Penguin model unlocks
+        CHILLED_MOBS_KILLED_200 = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "chilled_mobs_killed_200"),
+            new VaultMobKillGoal(100).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(e -> e.getEntityLiving() instanceof Mob).
+                withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.CHILLED)).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId =
+                        ModDynamicModels.Armor.PENGUIN.getPiece(EquipmentSlot.FEET).
+                            map(ArmorPieceModel::getId).
+                            orElse(null);
+
+                    if (modelId != null && !discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You have killed " + (int) goal.getTargetProgress() + " chilled mobs!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(
+                            VaultArmorItem.forSlot(EquipmentSlot.FEET),
+                            modelId,
+                            player);
+                    }
+                }));
+        CHILLED_MOBS_KILLED_400 = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "chilled_mobs_killed_400"),
+            new VaultMobKillGoal(100).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(e -> e.getEntityLiving() instanceof Mob).
+                withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.CHILLED)).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId =
+                        ModDynamicModels.Armor.PENGUIN.getPiece(EquipmentSlot.LEGS).
+                            map(ArmorPieceModel::getId).
+                            orElse(null);
+
+                    if (modelId != null && !discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You have killed " + (int) goal.getTargetProgress() + " chilled mobs!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(
+                            VaultArmorItem.forSlot(EquipmentSlot.LEGS),
+                            modelId,
+                            player);
+                    }
+                }));
+        FREEZE_MOBS_KILLED_50 = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "freeze_mobs_killed_50"),
+            new VaultMobKillGoal(100).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(e -> e.getEntityLiving() instanceof Mob).
+                withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.FREEZE)).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId =
+                        ModDynamicModels.Armor.PENGUIN.getPiece(EquipmentSlot.HEAD).
+                            map(ArmorPieceModel::getId).
+                            orElse(null);
+
+                    if (modelId != null && !discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You have killed " + (int) goal.getTargetProgress() + " chilled mobs!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(
+                            VaultArmorItem.forSlot(EquipmentSlot.HEAD),
+                            modelId,
+                            player);
+                    }
+                }));
+        FREEZE_MOBS_KILLED_100 = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "freeze_mobs_killed_100"),
+            new VaultMobKillGoal(100).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(e -> e.getEntityLiving() instanceof Mob).
+                withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.FREEZE)).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId =
+                        ModDynamicModels.Armor.PENGUIN.getPiece(EquipmentSlot.CHEST).
+                            map(ArmorPieceModel::getId).
+                            orElse(null);
+
+                    if (modelId != null && !discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You have killed " + (int) goal.getTargetProgress() + " chilled mobs!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(
+                            VaultArmorItem.forSlot(EquipmentSlot.CHEST),
+                            modelId,
+                            player);
+                    }
+                }));
     }
 
 
@@ -206,6 +316,26 @@ public class ExtraModelDiscoveryGoals
      * The goal for scaring mobs to get SCARECROW model 4.
      */
     public final static VaultMobEffectGoal MOBS_SCARED_AWAY_800;
+
+    /**
+     * The goal for killing mobs while they are chilled.
+     */
+    public final static VaultMobKillGoal CHILLED_MOBS_KILLED_200;
+
+    /**
+     * The goal for killing mobs while they are chilled.
+     */
+    public final static VaultMobKillGoal CHILLED_MOBS_KILLED_400;
+
+    /**
+     * The goal for killing mobs while they are freezed.
+     */
+    public final static VaultMobKillGoal FREEZE_MOBS_KILLED_50;
+
+    /**
+     * The goal for killing mobs while they are freezed.
+     */
+    public final static VaultMobKillGoal FREEZE_MOBS_KILLED_100;
 
     /**
      * This method registers new vault goal to the ModModelDiscoveryGoals
