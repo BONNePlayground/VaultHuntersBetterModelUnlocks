@@ -9,9 +9,12 @@ package lv.id.bonne.vaulthunters.bettermodelunlocks.utils;
 
 import iskallia.vault.discoverylogic.goal.VaultMobKillGoal;
 import iskallia.vault.discoverylogic.goal.base.DiscoveryGoal;
+import iskallia.vault.dynamodel.model.armor.ArmorPieceModel;
 import iskallia.vault.init.ModDynamicModels;
+import iskallia.vault.init.ModEffects;
 import iskallia.vault.init.ModItems;
 import iskallia.vault.init.ModModelDiscoveryGoals;
+import iskallia.vault.item.gear.VaultArmorItem;
 import iskallia.vault.world.data.DiscoveredModelsData;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.BetterModelUnlocks;
 import net.minecraft.ChatFormatting;
@@ -19,6 +22,7 @@ import net.minecraft.Util;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraftforge.fml.common.Mod;
@@ -32,9 +36,7 @@ public class ExtraModelDiscoveryGoals
 {
     static
     {
-        /**
-         * Register new goal for killing mobs while riding a pig.
-         */
+        // Register new goal for killing mobs while riding a pig.
         MOBS_KILLED_WHILE_RIDING_PIG = registerGoal(
             new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_killed_while_riding_pig"),
             new VaultMobKillGoal(50).
@@ -56,6 +58,127 @@ public class ExtraModelDiscoveryGoals
                         discoversData.discoverModelAndBroadcast(ModItems.WAND, modelId, player);
                     }
                 }));
+        // Register new goal for repealing mobs.
+        MOBS_SCARED_AWAY_200 = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_scared_away_200"),
+            new VaultMobEffectGoal(200).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(e -> e.getEntityLiving() instanceof Mob).
+                withPredicate(e -> e.getPotionEffect().getEffect() == ModEffects.TAUNT_REPEL_MOB).
+                withPredicate(e -> e.getOldPotionEffect() == null ||
+                    e.getOldPotionEffect().getEffect() != ModEffects.TAUNT_REPEL_MOB).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId =
+                        ModDynamicModels.Armor.SCARECROW.getPiece(EquipmentSlot.HEAD).
+                            map(ArmorPieceModel::getId).
+                            orElse(null);
+
+                    if (modelId != null &&
+                        !discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You have scared " + (int) goal.getTargetProgress() + " mobs!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(
+                            VaultArmorItem.forSlot(EquipmentSlot.HEAD),
+                            modelId,
+                            player);
+                    }
+                }));
+        MOBS_SCARED_AWAY_400 = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_scared_away_400"),
+            new VaultMobEffectGoal(400).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(e -> e.getEntityLiving() instanceof Mob).
+                withPredicate(e -> e.getPotionEffect().getEffect() == ModEffects.TAUNT_REPEL_MOB).
+                withPredicate(e -> e.getOldPotionEffect() == null ||
+                    e.getOldPotionEffect().getEffect() != ModEffects.TAUNT_REPEL_MOB).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId =
+                        ModDynamicModels.Armor.SCARECROW.getPiece(EquipmentSlot.FEET).
+                            map(ArmorPieceModel::getId).
+                            orElse(null);
+
+                    if (modelId != null &&
+                        !discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You have scared " + (int) goal.getTargetProgress() + " mobs!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(
+                            VaultArmorItem.forSlot(EquipmentSlot.FEET),
+                            modelId,
+                            player);
+                    }
+                }));
+        MOBS_SCARED_AWAY_600 = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_scared_away_600"),
+            new VaultMobEffectGoal(600).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(e -> e.getEntityLiving() instanceof Mob).
+                withPredicate(e -> e.getPotionEffect().getEffect() == ModEffects.TAUNT_REPEL_MOB).
+                withPredicate(e -> e.getOldPotionEffect() == null ||
+                    e.getOldPotionEffect().getEffect() != ModEffects.TAUNT_REPEL_MOB).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId =
+                        ModDynamicModels.Armor.SCARECROW.getPiece(EquipmentSlot.LEGS).
+                            map(ArmorPieceModel::getId).
+                            orElse(null);
+
+                    if (modelId != null &&
+                        !discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You have scared " + (int) goal.getTargetProgress() + " mobs!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(
+                            VaultArmorItem.forSlot(EquipmentSlot.LEGS),
+                            modelId,
+                            player);
+                    }
+                }));
+        MOBS_SCARED_AWAY_800 = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_scared_away_800"),
+            new VaultMobEffectGoal(800).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(e -> e.getEntityLiving() instanceof Mob).
+                withPredicate(e -> e.getPotionEffect().getEffect() == ModEffects.TAUNT_REPEL_MOB).
+                withPredicate(e -> e.getOldPotionEffect() == null ||
+                    e.getOldPotionEffect().getEffect() != ModEffects.TAUNT_REPEL_MOB).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId =
+                        ModDynamicModels.Armor.SCARECROW.getPiece(EquipmentSlot.CHEST).
+                            map(ArmorPieceModel::getId).
+                            orElse(null);
+
+                    if (modelId != null &&
+                        !discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You have scared " + (int) goal.getTargetProgress() + " mobs!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(
+                            VaultArmorItem.forSlot(EquipmentSlot.CHEST),
+                            modelId,
+                            player);
+                    }
+                }));
     }
 
 
@@ -64,6 +187,25 @@ public class ExtraModelDiscoveryGoals
      */
     public final static VaultMobKillGoal MOBS_KILLED_WHILE_RIDING_PIG;
 
+    /**
+     * The goal for scaring mobs to get SCARECROW model 1.
+     */
+    public final static VaultMobEffectGoal MOBS_SCARED_AWAY_200;
+
+    /**
+     * The goal for scaring mobs to get SCARECROW model 2.
+     */
+    public final static VaultMobEffectGoal MOBS_SCARED_AWAY_400;
+
+    /**
+     * The goal for scaring mobs to get SCARECROW model 3.
+     */
+    public final static VaultMobEffectGoal MOBS_SCARED_AWAY_600;
+
+    /**
+     * The goal for scaring mobs to get SCARECROW model 4.
+     */
+    public final static VaultMobEffectGoal MOBS_SCARED_AWAY_800;
 
     /**
      * This method registers new vault goal to the ModModelDiscoveryGoals

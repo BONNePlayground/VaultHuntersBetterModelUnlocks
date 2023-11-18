@@ -7,7 +7,9 @@
   "mixins": [
     "MixinBaguetteObjective",
     "MixinBeeKnightObjective",
+    "MixinEffectCloudEntity",
     "MixinSpawnVaultFighter",
-    "MixinStructureTemplate"
+    "MixinStructureTemplate",
+    "MixinTauntRepealAbility"
   ]
 }
