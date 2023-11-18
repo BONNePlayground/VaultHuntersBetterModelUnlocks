@@ -252,7 +252,7 @@ public class ExtraModelDiscoveryGoals
                     if (modelId != null && !discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
                     {
                         MutableComponent info =
-                            new TextComponent("You have killed " + (int) goal.getTargetProgress() + " chilled mobs!").
+                            new TextComponent("You have killed " + (int) goal.getTargetProgress() + " frozen mobs!").
                                 withStyle(ChatFormatting.GREEN);
                         player.sendMessage(info, Util.NIL_UUID);
 
@@ -279,7 +279,7 @@ public class ExtraModelDiscoveryGoals
                     if (modelId != null && !discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
                     {
                         MutableComponent info =
-                            new TextComponent("You have killed " + (int) goal.getTargetProgress() + " chilled mobs!").
+                            new TextComponent("You have killed " + (int) goal.getTargetProgress() + " frozen mobs!").
                                 withStyle(ChatFormatting.GREEN);
                         player.sendMessage(info, Util.NIL_UUID);
 

@@ -5,8 +5,8 @@ Gear transmogs will be unlocked similarly to the trinkets: smaller chance for un
 
 Custom Unique Transmogs:
 - Wand
-  - [x] baguette (experimental)
-  - [x] carrot_on_a_wand (experimental)
+  - [x] baguette (experimental | thebayker)
+  - [x] carrot_on_a_wand (experimental | BONNe)
   - [ ] carri_king
 - Shield
   - [ ] heart_chocolate
@@ -22,11 +22,11 @@ Custom Unique Transmogs:
 - Armor
   - [x] iskall_ibe (fixed)
   - [x] cake (fixed)
-  - [x] Bumbo Cactoni (experimental)
+  - [x] Bumbo Cactoni (experimental | *BONNe)
   - [ ] hell_cow
-  - [x] penguin
+  - [x] penguin (experimental | ProbablyNotDaniel)
   - [ ] sweet_heart
-  - [x] bee_knight (experimental)
+  - [x] bee_knight (experimental | BONNe)
   - [ ] scout 
   - [ ] jester
   - [ ] skallibomba
@@ -34,4 +34,4 @@ Custom Unique Transmogs:
   - [ ] crayon_green
   - [ ] crayon_red
   - [ ] crayon_yellow 
-  - [x] scarecrow (experimental)
+  - [x] scarecrow (experimental | karthavya from discord)
