@@ -34,4 +34,4 @@ Custom Unique Transmogs:
   - [ ] crayon_green
   - [ ] crayon_red
   - [ ] crayon_yellow 
-  - [x] scarecrow (experimental | karthavya from discord)
+  - [x] scarecrow (experimental | karthavya)
