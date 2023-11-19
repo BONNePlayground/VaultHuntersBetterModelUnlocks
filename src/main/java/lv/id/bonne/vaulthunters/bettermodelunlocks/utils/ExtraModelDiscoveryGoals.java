@@ -7,14 +7,10 @@
 package lv.id.bonne.vaulthunters.bettermodelunlocks.utils;
 
 
-import iskallia.vault.VaultMod;
 import iskallia.vault.discoverylogic.goal.VaultMobKillGoal;
 import iskallia.vault.discoverylogic.goal.base.DiscoveryGoal;
 import iskallia.vault.dynamodel.model.armor.ArmorPieceModel;
-import iskallia.vault.init.ModDynamicModels;
-import iskallia.vault.init.ModEffects;
-import iskallia.vault.init.ModItems;
-import iskallia.vault.init.ModModelDiscoveryGoals;
+import iskallia.vault.init.*;
 import iskallia.vault.item.gear.VaultArmorItem;
 import iskallia.vault.world.data.DiscoveredModelsData;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.BetterModelUnlocks;
@@ -289,6 +285,25 @@ public class ExtraModelDiscoveryGoals
                             player);
                     }
                 }));
+
+        MAX_HAMMER_SIZE = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "max_hammer_size"),
+            new JewelApplicationGoal(ModGearAttributes.HAMMER_SIZE, 7).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId = ModDynamicModels.Axes.GREATHAMMER.getId();
+
+                    if (!discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You have applied max hammer size!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(ModItems.AXE, modelId, player);
+                    }
+                }));
     }
 
 
@@ -336,6 +351,11 @@ public class ExtraModelDiscoveryGoals
      * The goal for killing mobs while they are freezed.
      */
     public final static VaultMobKillGoal FREEZE_MOBS_KILLED_100;
+
+    /**
+     * The goal for getting max Hammer Size Tool
+     */
+    public final static JewelApplicationGoal MAX_HAMMER_SIZE;
 
     /**
      * This method registers new vault goal to the ModModelDiscoveryGoals

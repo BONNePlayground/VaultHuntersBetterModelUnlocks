@@ -10,6 +10,7 @@
     "MixinEffectCloudEntity",
     "MixinSpawnVaultFighter",
     "MixinStructureTemplate",
-    "MixinTauntRepealAbility"
+    "MixinTauntRepealAbility",
+    "MixinVaultJewelApplicationStationMessage"
   ]
 }
