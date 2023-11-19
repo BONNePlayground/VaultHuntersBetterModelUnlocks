@@ -8,7 +8,7 @@ package lv.id.bonne.vaulthunters.bettermodelunlocks.events;
 
 
 import iskallia.vault.init.ModItems;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.utils.ExtraModelDiscoveryGoals;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals.ExtraModelDiscoveryGoals;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.entity.player.AnvilRepairEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

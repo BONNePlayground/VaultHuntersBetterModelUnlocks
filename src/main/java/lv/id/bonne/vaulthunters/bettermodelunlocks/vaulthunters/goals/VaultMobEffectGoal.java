@@ -4,7 +4,7 @@
 //
 
 
-package lv.id.bonne.vaulthunters.bettermodelunlocks.utils;
+package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals;
 
 
 import java.util.LinkedList;

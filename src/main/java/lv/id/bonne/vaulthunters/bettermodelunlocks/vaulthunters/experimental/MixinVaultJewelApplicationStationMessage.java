@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import iskallia.vault.container.VaultJewelApplicationStationContainer;
 import iskallia.vault.network.message.VaultJewelApplicationStationMessage;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.utils.ExtraModelDiscoveryGoals;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals.ExtraModelDiscoveryGoals;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraftforge.network.NetworkEvent;

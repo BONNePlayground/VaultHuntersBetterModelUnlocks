@@ -4,7 +4,7 @@
 //
 
 
-package lv.id.bonne.vaulthunters.bettermodelunlocks.utils;
+package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals;
 
 
 import iskallia.vault.discoverylogic.goal.VaultMobKillGoal;
@@ -14,6 +14,8 @@ import iskallia.vault.init.*;
 import iskallia.vault.item.gear.VaultArmorItem;
 import iskallia.vault.world.data.DiscoveredModelsData;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.BetterModelUnlocks;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals.JewelApplicationGoal;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals.VaultMobEffectGoal;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.network.chat.MutableComponent;
