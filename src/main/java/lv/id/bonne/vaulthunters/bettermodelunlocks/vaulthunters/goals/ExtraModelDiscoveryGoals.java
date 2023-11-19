@@ -7,6 +7,9 @@
 package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals;
 
 
+import com.github.alexthe666.alexsmobs.AlexsMobs;
+import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
+
 import iskallia.vault.discoverylogic.goal.VaultMobKillGoal;
 import iskallia.vault.discoverylogic.goal.base.DiscoveryGoal;
 import iskallia.vault.dynamodel.model.armor.ArmorPieceModel;
@@ -181,7 +184,7 @@ public class ExtraModelDiscoveryGoals
         // Penguin model unlocks
         CHILLED_MOBS_KILLED_200 = registerGoal(
             new ResourceLocation(BetterModelUnlocks.MOD_ID, "chilled_mobs_killed_200"),
-            new VaultMobKillGoal(100).
+            new VaultMobKillGoal(200).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
                 withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.CHILLED)).
@@ -208,7 +211,7 @@ public class ExtraModelDiscoveryGoals
                 }));
         CHILLED_MOBS_KILLED_400 = registerGoal(
             new ResourceLocation(BetterModelUnlocks.MOD_ID, "chilled_mobs_killed_400"),
-            new VaultMobKillGoal(100).
+            new VaultMobKillGoal(400).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
                 withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.CHILLED)).
@@ -235,7 +238,7 @@ public class ExtraModelDiscoveryGoals
                 }));
         FREEZE_MOBS_KILLED_50 = registerGoal(
             new ResourceLocation(BetterModelUnlocks.MOD_ID, "freeze_mobs_killed_50"),
-            new VaultMobKillGoal(100).
+            new VaultMobKillGoal(50).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
                 withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.FREEZE)).
@@ -306,6 +309,27 @@ public class ExtraModelDiscoveryGoals
                         discoversData.discoverModelAndBroadcast(ModItems.AXE, modelId, player);
                     }
                 }));
+        KILL_BUNFUNGUS = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "bunfungus_killed"),
+            new VaultMobKillGoal(5).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(e -> e.getEntityLiving() instanceof Mob).
+                withPredicate(e -> e.getEntityLiving().getType() == AMEntityRegistry.BUNFUNGUS.get()).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId = ModDynamicModels.Wands.CARRI_KING.getId();
+
+                    if (!discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You have killed " + (int) goal.getTargetProgress() + " bunfungus in this Vault!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(ModItems.WAND, modelId, player);
+                    }
+                }));
     }
 
 
@@ -358,6 +382,11 @@ public class ExtraModelDiscoveryGoals
      * The goal for getting max Hammer Size Tool
      */
     public final static JewelApplicationGoal MAX_HAMMER_SIZE;
+
+    /**
+     * The goal for killing 5 bunfungus mobs.
+     */
+    public final static VaultMobKillGoal KILL_BUNFUNGUS;
 
     /**
      * This method registers new vault goal to the ModModelDiscoveryGoals
