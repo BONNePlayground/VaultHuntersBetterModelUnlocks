@@ -28,13 +28,6 @@ public class Configuration
             comment("Trinkets has value 0.16666667F").
             defineInRange("knownModelPunishment", 0.16666667F, 0.001, 1.0d);
 
-        this.easierIdentification = builder.
-            comment("This option allows an faster gear identification.").
-            comment("Allows player to click with a backpack on identification stand to instantly").
-            comment("identify all gear in it.").
-            comment("By default it is enabled.").
-            define("easierIdentification", true);
-
         builder.comment("This category holds options that are experimental and not-canon.");
         builder.push("Experimental Unlocks");
 
@@ -82,17 +75,6 @@ public class Configuration
 
 
     /**
-     * Gets easier identification.
-     *
-     * @return the easier identification.
-     */
-    public boolean getEasierIdentification()
-    {
-        return this.easierIdentification.get();
-    }
-
-
-    /**
      * Gets chance to spawn pig when spawning vault fighter.
      * @return the chance to spawn pig when spawning vault fighter.
      */
@@ -126,11 +108,6 @@ public class Configuration
      * The config value for punishing already known gear models.
      */
     private final ForgeConfigSpec.ConfigValue<Boolean> experimentalUnlocks;
-
-    /**
-     * The config value for easier gear identification.
-     */
-    private final ForgeConfigSpec.ConfigValue<Boolean> easierIdentification;
 
     /**
      * The config value for chance to spawn pig when spawning vault fighter.

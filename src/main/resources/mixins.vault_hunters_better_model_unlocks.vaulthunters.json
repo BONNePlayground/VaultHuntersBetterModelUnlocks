@@ -6,8 +6,6 @@
   "plugin": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.VaultHuntersIntegrationModConfiguration",
   "mixins": [
     "MixinCrakePedestalObjective",
-    "MixinIdentificationStandBlock",
-    "MixinIdentificationStandTileEntity",
     "MixinSpiritExtractorMessage",
     "MixinVaultArmorItem",
     "MixinVaultAxeItem",
