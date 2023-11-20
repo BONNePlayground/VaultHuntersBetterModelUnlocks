@@ -10,6 +10,8 @@ package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals;
 import com.github.alexthe666.alexsmobs.AlexsMobs;
 import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
 
+import java.util.Map;
+
 import iskallia.vault.discoverylogic.goal.VaultMobKillGoal;
 import iskallia.vault.discoverylogic.goal.base.DiscoveryGoal;
 import iskallia.vault.dynamodel.model.armor.ArmorPieceModel;
@@ -330,6 +332,32 @@ public class ExtraModelDiscoveryGoals
                         discoversData.discoverModelAndBroadcast(ModItems.WAND, modelId, player);
                     }
                 }));
+
+        // Jester unlock
+        JESTER_SET = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "jester_set"),
+            new VaultRequiredBlocksGoals(Map.of(
+                ModBlocks.WOODEN_CHEST_PLACEABLE, 1,
+                ModBlocks.GILDED_CHEST_PLACEABLE, 2,
+                ModBlocks.LIVING_CHEST_PLACEABLE, 4,
+                ModBlocks.ORNATE_CHEST_PLACEABLE, 8,
+                ModBlocks.TREASURE_CHEST_PLACEABLE, 16),
+                31).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId = ModDynamicModels.Armor.JESTER.getId();
+
+                    if (!discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("You are such a troll!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverAllArmorPieceAndBroadcast(player, ModDynamicModels.Armor.JESTER);
+                    }
+                }));
     }
 
 
@@ -387,6 +415,11 @@ public class ExtraModelDiscoveryGoals
      * The goal for killing 5 bunfungus mobs.
      */
     public final static VaultMobKillGoal KILL_BUNFUNGUS;
+
+    /**
+     * The goal for killing 5 bunfungus mobs.
+     */
+    public final static VaultRequiredBlocksGoals JESTER_SET;
 
     /**
      * This method registers new vault goal to the ModModelDiscoveryGoals
