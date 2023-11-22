@@ -9,6 +9,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 
 /**
@@ -28,8 +29,16 @@ public class BetterModelUnlocks
 
         // Register event listeners.
         MinecraftForge.EVENT_BUS.register(AnvilRepairEventListener.class);
+        MinecraftForge.EVENT_BUS.addListener(this::commonSetup);
+    }
 
-        // Init class
+
+    /**
+     * Common setup event.
+     * @param event The event.
+     */
+    private void commonSetup(FMLCommonSetupEvent event)
+    {
         ExtraCommonEvents.init();
         ExtraModelDiscoveryGoals.init();
     }

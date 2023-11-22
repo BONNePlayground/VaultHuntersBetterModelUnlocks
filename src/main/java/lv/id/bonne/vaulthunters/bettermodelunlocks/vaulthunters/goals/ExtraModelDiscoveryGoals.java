@@ -8,7 +8,6 @@ package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals;
 
 
 import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
-
 import java.util.Map;
 
 import iskallia.vault.discoverylogic.goal.VaultMobKillGoal;
@@ -35,7 +34,10 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ExtraModelDiscoveryGoals
 {
-    static
+    /**
+     * Now register all custom goals to the ModModelDiscoveryGoals.
+     */
+    public static void init()
     {
         // Register new goal for killing mobs while riding a pig.
         MOBS_KILLED_WHILE_RIDING_PIG = registerGoal(
@@ -381,71 +383,6 @@ public class ExtraModelDiscoveryGoals
 
 
     /**
-     * The goal for killing mobs while riding a pig to get CARROT_ON_A_WAND model.
-     */
-    public final static VaultMobKillGoal MOBS_KILLED_WHILE_RIDING_PIG;
-
-    /**
-     * The goal for scaring mobs to get SCARECROW model 1.
-     */
-    public final static VaultMobEffectGoal MOBS_SCARED_AWAY_200;
-
-    /**
-     * The goal for scaring mobs to get SCARECROW model 2.
-     */
-    public final static VaultMobEffectGoal MOBS_SCARED_AWAY_400;
-
-    /**
-     * The goal for scaring mobs to get SCARECROW model 3.
-     */
-    public final static VaultMobEffectGoal MOBS_SCARED_AWAY_600;
-
-    /**
-     * The goal for scaring mobs to get SCARECROW model 4.
-     */
-    public final static VaultMobEffectGoal MOBS_SCARED_AWAY_800;
-
-    /**
-     * The goal for killing mobs while they are chilled.
-     */
-    public final static VaultMobKillGoal CHILLED_MOBS_KILLED_200;
-
-    /**
-     * The goal for killing mobs while they are chilled.
-     */
-    public final static VaultMobKillGoal CHILLED_MOBS_KILLED_400;
-
-    /**
-     * The goal for killing mobs while they are freezed.
-     */
-    public final static VaultMobKillGoal FREEZE_MOBS_KILLED_50;
-
-    /**
-     * The goal for killing mobs while they are freezed.
-     */
-    public final static VaultMobKillGoal FREEZE_MOBS_KILLED_100;
-
-    /**
-     * The goal for getting max Hammer Size Tool
-     */
-    public final static JewelApplicationGoal MAX_HAMMER_SIZE;
-
-    /**
-     * The goal for killing 5 bunfungus mobs.
-     */
-    public final static VaultMobKillGoal KILL_BUNFUNGUS;
-
-    /**
-     * The goal for killing 5 bunfungus mobs.
-     */
-    public final static VaultRequiredBlocksGoal JESTER_SET;
-
-    /**
-     * The goal for drinking vault potion.
-     */
-    public final static PotionUseGoal NIGHTFALL_DRINKING;
-
-    /**
      * This method registers new vault goal to the ModModelDiscoveryGoals
      * @param id The id of the goal.
      * @param goal The goal.
@@ -461,7 +398,67 @@ public class ExtraModelDiscoveryGoals
 
 
     /**
-     * Just class init to trigger everything.
+     * The goal for killing mobs while riding a pig to get CARROT_ON_A_WAND model.
      */
-    public static void init() {}
+    public static VaultMobKillGoal MOBS_KILLED_WHILE_RIDING_PIG;
+
+    /**
+     * The goal for scaring mobs to get SCARECROW model 1.
+     */
+    public static VaultMobEffectGoal MOBS_SCARED_AWAY_200;
+
+    /**
+     * The goal for scaring mobs to get SCARECROW model 2.
+     */
+    public static VaultMobEffectGoal MOBS_SCARED_AWAY_400;
+
+    /**
+     * The goal for scaring mobs to get SCARECROW model 3.
+     */
+    public static VaultMobEffectGoal MOBS_SCARED_AWAY_600;
+
+    /**
+     * The goal for scaring mobs to get SCARECROW model 4.
+     */
+    public static VaultMobEffectGoal MOBS_SCARED_AWAY_800;
+
+    /**
+     * The goal for killing mobs while they are chilled.
+     */
+    public static VaultMobKillGoal CHILLED_MOBS_KILLED_200;
+
+    /**
+     * The goal for killing mobs while they are chilled.
+     */
+    public static VaultMobKillGoal CHILLED_MOBS_KILLED_400;
+
+    /**
+     * The goal for killing mobs while they are freezed.
+     */
+    public static VaultMobKillGoal FREEZE_MOBS_KILLED_50;
+
+    /**
+     * The goal for killing mobs while they are freezed.
+     */
+    public static VaultMobKillGoal FREEZE_MOBS_KILLED_100;
+
+    /**
+     * The goal for getting max Hammer Size Tool
+     */
+    public static JewelApplicationGoal MAX_HAMMER_SIZE;
+
+    /**
+     * The goal for killing 5 bunfungus mobs.
+     */
+    public static VaultMobKillGoal KILL_BUNFUNGUS;
+
+    /**
+     * The goal for killing 5 bunfungus mobs.
+     */
+    public static VaultRequiredBlocksGoal JESTER_SET;
+
+    /**
+     * The goal for drinking vault potion.
+     */
+    public static PotionUseGoal NIGHTFALL_DRINKING;
 }
