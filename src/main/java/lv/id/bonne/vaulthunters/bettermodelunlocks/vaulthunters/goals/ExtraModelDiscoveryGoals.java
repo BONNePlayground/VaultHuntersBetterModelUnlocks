@@ -358,6 +358,26 @@ public class ExtraModelDiscoveryGoals
                         discoversData.discoverAllArmorPieceAndBroadcast(player, ModDynamicModels.Armor.JESTER);
                     }
                 }));
+        // unlock nightfall sword
+        NIGHTFALL_DRINKING = registerGoal(
+            new ResourceLocation(BetterModelUnlocks.MOD_ID, "potion_nightfall"),
+            new PotionUseGoal(20).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId = ModDynamicModels.Swords.NIGHTFALL.getId();
+
+                    if (!discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("So much potion, so close to intoxicating!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(ModItems.SWORD, modelId, player);
+                    }
+                }));
     }
 
 
@@ -422,6 +442,11 @@ public class ExtraModelDiscoveryGoals
     public final static VaultRequiredBlocksGoals JESTER_SET;
 
     /**
+     * The goal for drinking vault potion.
+     */
+    public final static PotionUseGoal NIGHTFALL_DRINKING;
+
+    /**
      * This method registers new vault goal to the ModModelDiscoveryGoals
      * @param id The id of the goal.
      * @param goal The goal.
@@ -434,4 +459,10 @@ public class ExtraModelDiscoveryGoals
         ModModelDiscoveryGoals.REGISTRY.put(id, goal);
         return goal;
     }
+
+
+    /**
+     * Just class init to trigger everything.
+     */
+    public static void init() {}
 }

@@ -3,6 +3,8 @@ package lv.id.bonne.vaulthunters.bettermodelunlocks;
 
 import lv.id.bonne.vaulthunters.bettermodelunlocks.config.Configuration;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.events.AnvilRepairEventListener;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.events.ExtraCommonEvents;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals.ExtraModelDiscoveryGoals;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -26,6 +28,10 @@ public class BetterModelUnlocks
 
         // Register event listeners.
         MinecraftForge.EVENT_BUS.register(AnvilRepairEventListener.class);
+
+        // Init class
+        ExtraCommonEvents.init();
+        ExtraModelDiscoveryGoals.init();
     }
 
 

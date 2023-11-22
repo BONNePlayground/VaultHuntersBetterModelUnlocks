@@ -12,7 +12,7 @@ Custom Unique Transmogs:
   - [ ] heart_chocolate (grab a chocolate from the vault | mefallit) ??
   - [ ] honey_drone 
 - Sword
-  - [ ] nightfall (loot chests without triggering spawners?  -Zushi-) ??
+  - [x] nightfall (experimental | BONNe) [drink vault potion 20 times in single vault] 
   - [ ] glorem_glipsum 
   - [ ] honey_wand (clear poison with honey bottle? | ProbablyNotDaniel) ??
   - [x] DEATHS_DOOR (fixed)
