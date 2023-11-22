@@ -7,7 +7,6 @@
 package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals;
 
 
-import com.github.alexthe666.alexsmobs.AlexsMobs;
 import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
 
 import java.util.Map;
@@ -19,8 +18,6 @@ import iskallia.vault.init.*;
 import iskallia.vault.item.gear.VaultArmorItem;
 import iskallia.vault.world.data.DiscoveredModelsData;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.BetterModelUnlocks;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals.JewelApplicationGoal;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals.VaultMobEffectGoal;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.network.chat.MutableComponent;
@@ -296,6 +293,7 @@ public class ExtraModelDiscoveryGoals
         MAX_HAMMER_SIZE = registerGoal(
             new ResourceLocation(BetterModelUnlocks.MOD_ID, "max_hammer_size"),
             new JewelApplicationGoal(ModGearAttributes.HAMMER_SIZE, 7).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 setReward((player, goal) ->
                 {
                     DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
@@ -336,13 +334,14 @@ public class ExtraModelDiscoveryGoals
         // Jester unlock
         JESTER_SET = registerGoal(
             new ResourceLocation(BetterModelUnlocks.MOD_ID, "jester_set"),
-            new VaultRequiredBlocksGoals(Map.of(
+            new VaultRequiredBlocksGoal(Map.of(
                 ModBlocks.WOODEN_CHEST_PLACEABLE, 1,
                 ModBlocks.GILDED_CHEST_PLACEABLE, 2,
                 ModBlocks.LIVING_CHEST_PLACEABLE, 4,
                 ModBlocks.ORNATE_CHEST_PLACEABLE, 8,
                 ModBlocks.TREASURE_CHEST_PLACEABLE, 16),
                 31).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 setReward((player, goal) ->
                 {
                     DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
@@ -439,7 +438,7 @@ public class ExtraModelDiscoveryGoals
     /**
      * The goal for killing 5 bunfungus mobs.
      */
-    public final static VaultRequiredBlocksGoals JESTER_SET;
+    public final static VaultRequiredBlocksGoal JESTER_SET;
 
     /**
      * The goal for drinking vault potion.

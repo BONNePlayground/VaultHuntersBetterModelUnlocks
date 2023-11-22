@@ -7,6 +7,10 @@
 package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals;
 
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Predicate;
+
 import iskallia.vault.discoverylogic.goal.base.DiscoveryGoal;
 import iskallia.vault.gear.attribute.VaultGearAttribute;
 import iskallia.vault.gear.data.AttributeGearData;
@@ -36,6 +40,18 @@ public class JewelApplicationGoal extends DiscoveryGoal<JewelApplicationGoal>
 
 
     /**
+     * This method is used to add predicate to the list of predicates.
+     * @param predicate The predicate that will be added to the list of predicates.
+     * @return The JewelApplicationGoal goal.
+     */
+    public JewelApplicationGoal withPredicate(Predicate<ItemStack> predicate)
+    {
+        this.predicates.add(predicate);
+        return this;
+    }
+
+
+    /**
      * This method is triggered on Jewel application. It checks if tool matches minimal requested
      * attribute value.
      * @param player Player who applied Jewel
@@ -43,7 +59,8 @@ public class JewelApplicationGoal extends DiscoveryGoal<JewelApplicationGoal>
      */
     public void onJewelApply(ServerPlayer player, ItemStack toolItem)
     {
-        if (toolItem.getItem() instanceof ToolItem)
+        if (toolItem.getItem() instanceof ToolItem &&
+            this.predicates.stream().allMatch(predicate -> predicate.test(toolItem)))
         {
             ToolGearData data = AttributeGearData.read(toolItem);
 
@@ -82,4 +99,10 @@ public class JewelApplicationGoal extends DiscoveryGoal<JewelApplicationGoal>
      * The target attribute  that need to be checked.
      */
     private final VaultGearAttribute<?> attribute;
+
+
+    /**
+     * The list of predicates that will be used to check if the event is valid.
+     */
+    protected List<Predicate<ItemStack>> predicates = new LinkedList<>();
 }
