@@ -5,11 +5,13 @@ import lv.id.bonne.vaulthunters.bettermodelunlocks.config.Configuration;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.events.AnvilRepairEventListener;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.events.ExtraCommonEvents;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals.ExtraModelDiscoveryGoals;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 
 /**
@@ -29,7 +31,7 @@ public class BetterModelUnlocks
 
         // Register event listeners.
         MinecraftForge.EVENT_BUS.register(AnvilRepairEventListener.class);
-        MinecraftForge.EVENT_BUS.addListener(this::commonSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
     }
 
 
@@ -41,6 +43,17 @@ public class BetterModelUnlocks
     {
         ExtraCommonEvents.init();
         ExtraModelDiscoveryGoals.init();
+    }
+
+
+    /**
+     * Cleaner resource location creation.
+     * @param key The key.
+     * @return The resource location.
+     */
+    public static ResourceLocation of(String key)
+    {
+        return new ResourceLocation(MOD_ID, key);
     }
 
 
