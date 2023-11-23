@@ -9,7 +9,9 @@ package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals;
 
 import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
 import java.util.Map;
+import java.util.Random;
 
+import iskallia.vault.discoverylogic.goal.VaultCompletionGoal;
 import iskallia.vault.discoverylogic.goal.VaultMobKillGoal;
 import iskallia.vault.discoverylogic.goal.base.DiscoveryGoal;
 import iskallia.vault.dynamodel.model.armor.ArmorPieceModel;
@@ -17,6 +19,7 @@ import iskallia.vault.init.*;
 import iskallia.vault.item.gear.VaultArmorItem;
 import iskallia.vault.world.data.DiscoveredModelsData;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.BetterModelUnlocks;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.utils.ExtraModFields;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.network.chat.MutableComponent;
@@ -379,6 +382,25 @@ public class ExtraModelDiscoveryGoals
                         discoversData.discoverModelAndBroadcast(ModItems.SWORD, modelId, player);
                     }
                 }));
+        // unlock cow armor set
+        COW_VAULT = registerGoal(
+            BetterModelUnlocks.of("cow_vault"),
+            new VaultCompletionGoal().
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(data -> data.getVault().getOr(ExtraModFields.COW_VAULT, false)).
+                setReward((player, goal) ->
+                {
+                    if (DiscoveredModelsData.get(player.getLevel()).
+                        discoverRandomArmorPieceAndBroadcast(player,
+                            ModDynamicModels.Armor.HELL_COW,
+                            new Random()))
+                    {
+                        MutableComponent info =
+                            new TextComponent("This vault does not exist!!! Forget about it!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+                    }
+                }));
     }
 
 
@@ -461,4 +483,9 @@ public class ExtraModelDiscoveryGoals
      * The goal for drinking vault potion.
      */
     public static PotionUseGoal NIGHTFALL_DRINKING;
+
+    /**
+     * The goal for completing cow vault.
+     */
+    public static VaultCompletionGoal COW_VAULT;
 }

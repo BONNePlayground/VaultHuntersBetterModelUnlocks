@@ -7,6 +7,8 @@
   "mixins": [
     "MixinBaguetteObjective",
     "MixinBeeKnightObjective",
+    "MixinCowBaseSpawnerTileEntity",
+    "MixinCowVault",
     "MixinEffectCloudEntity",
     "MixinSpawnVaultFighter",
     "MixinStructureTemplate",
