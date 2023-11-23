@@ -44,7 +44,7 @@ public class ExtraModelDiscoveryGoals
     {
         // Register new goal for killing mobs while riding a pig.
         MOBS_KILLED_WHILE_RIDING_PIG = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_killed_while_riding_pig"),
+            BetterModelUnlocks.of("mobs_killed_while_riding_pig"),
             new VaultMobKillGoal(50).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
@@ -66,7 +66,7 @@ public class ExtraModelDiscoveryGoals
                 }));
         // Register new goal for repealing mobs.
         MOBS_SCARED_AWAY_200 = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_scared_away_200"),
+            BetterModelUnlocks.of("mobs_scared_away_200"),
             new VaultMobEffectGoal(200).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
@@ -96,7 +96,7 @@ public class ExtraModelDiscoveryGoals
                     }
                 }));
         MOBS_SCARED_AWAY_400 = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_scared_away_400"),
+            BetterModelUnlocks.of("mobs_scared_away_400"),
             new VaultMobEffectGoal(400).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
@@ -126,7 +126,7 @@ public class ExtraModelDiscoveryGoals
                     }
                 }));
         MOBS_SCARED_AWAY_600 = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_scared_away_600"),
+            BetterModelUnlocks.of("mobs_scared_away_600"),
             new VaultMobEffectGoal(600).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
@@ -156,7 +156,7 @@ public class ExtraModelDiscoveryGoals
                     }
                 }));
         MOBS_SCARED_AWAY_800 = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "mobs_scared_away_800"),
+            BetterModelUnlocks.of("mobs_scared_away_800"),
             new VaultMobEffectGoal(800).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
@@ -187,7 +187,7 @@ public class ExtraModelDiscoveryGoals
                 }));
         // Penguin model unlocks
         CHILLED_MOBS_KILLED_200 = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "chilled_mobs_killed_200"),
+            BetterModelUnlocks.of("chilled_mobs_killed_200"),
             new VaultMobKillGoal(200).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
@@ -214,7 +214,7 @@ public class ExtraModelDiscoveryGoals
                     }
                 }));
         CHILLED_MOBS_KILLED_400 = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "chilled_mobs_killed_400"),
+            BetterModelUnlocks.of("chilled_mobs_killed_400"),
             new VaultMobKillGoal(400).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
@@ -241,7 +241,7 @@ public class ExtraModelDiscoveryGoals
                     }
                 }));
         FREEZE_MOBS_KILLED_50 = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "freeze_mobs_killed_50"),
+            BetterModelUnlocks.of("freeze_mobs_killed_50"),
             new VaultMobKillGoal(50).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
@@ -268,7 +268,7 @@ public class ExtraModelDiscoveryGoals
                     }
                 }));
         FREEZE_MOBS_KILLED_100 = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "freeze_mobs_killed_100"),
+            BetterModelUnlocks.of("freeze_mobs_killed_100"),
             new VaultMobKillGoal(100).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
@@ -296,7 +296,7 @@ public class ExtraModelDiscoveryGoals
                 }));
 
         MAX_HAMMER_SIZE = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "max_hammer_size"),
+            BetterModelUnlocks.of("max_hammer_size"),
             new JewelApplicationGoal(ModGearAttributes.HAMMER_SIZE, 7).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 setReward((player, goal) ->
@@ -315,7 +315,7 @@ public class ExtraModelDiscoveryGoals
                     }
                 }));
         KILL_BUNFUNGUS = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "bunfungus_killed"),
+            BetterModelUnlocks.of("bunfungus_killed"),
             new VaultMobKillGoal(5).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
@@ -338,7 +338,7 @@ public class ExtraModelDiscoveryGoals
 
         // Jester unlock
         JESTER_SET = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "jester_set"),
+            BetterModelUnlocks.of("jester_set"),
             new VaultRequiredBlocksGoal(Map.of(
                 ModBlocks.WOODEN_CHEST_PLACEABLE, 1,
                 ModBlocks.GILDED_CHEST_PLACEABLE, 2,
@@ -364,7 +364,7 @@ public class ExtraModelDiscoveryGoals
                 }));
         // unlock nightfall sword
         NIGHTFALL_DRINKING = registerGoal(
-            new ResourceLocation(BetterModelUnlocks.MOD_ID, "potion_nightfall"),
+            BetterModelUnlocks.of("potion_nightfall"),
             new PotionUseGoal(20).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 setReward((player, goal) ->
