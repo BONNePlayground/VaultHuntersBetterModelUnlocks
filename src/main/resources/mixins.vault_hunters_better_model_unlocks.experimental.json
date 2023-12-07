@@ -5,8 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "plugin": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.VaultHuntersExperimentalModConfiguration",
   "mixins": [
-    "MixinBaguetteObjective",
     "MixinBeeKnightObjective",
+    "MixinBlockKitchen",
     "MixinCowBaseSpawnerTileEntity",
     "MixinCowVault",
     "MixinEffectCloudEntity",
@@ -14,6 +14,7 @@
     "MixinSpawnVaultFighter",
     "MixinStructureTemplate",
     "MixinTauntRepealAbility",
+    "MixinToasterBlock",
     "MixinVaultJewelApplicationStationMessage"
   ]
 }

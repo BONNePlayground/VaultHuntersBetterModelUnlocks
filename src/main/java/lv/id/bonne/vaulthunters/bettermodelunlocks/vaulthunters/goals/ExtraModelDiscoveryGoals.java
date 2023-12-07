@@ -12,33 +12,29 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
+import iskallia.vault.block.discoverable.DiscoverTriggeringBlock;
 import iskallia.vault.core.vault.Vault;
 import iskallia.vault.core.vault.WorldManager;
 import iskallia.vault.discoverylogic.goal.VaultCompletionGoal;
 import iskallia.vault.discoverylogic.goal.VaultMobKillGoal;
 import iskallia.vault.discoverylogic.goal.base.DiscoveryGoal;
 import iskallia.vault.dynamodel.model.armor.ArmorPieceModel;
-import iskallia.vault.gear.data.AttributeGearData;
-import iskallia.vault.gear.trinket.TrinketEffect;
 import iskallia.vault.init.*;
 import iskallia.vault.item.gear.TrinketItem;
 import iskallia.vault.item.gear.VaultArmorItem;
 import iskallia.vault.world.data.DiscoveredModelsData;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.BetterModelUnlocks;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.logic.CowMobLogic;
+import net.blay09.mods.cookingforblockheads.tile.ToasterBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.Pig;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.items.IItemHandlerModifiable;
 import top.theillusivec4.curios.api.CuriosApi;
 
 
@@ -416,8 +412,9 @@ public class ExtraModelDiscoveryGoals
                     }
                 }));
 
-        SCOUT_USE = registerGoal(
-            BetterModelUnlocks.of("scout_use"),
+        // unlock scout armor set
+        SCOUT_ARMOR = registerGoal(
+            BetterModelUnlocks.of("scout_armor"),
             new HunterAbilityGoal(1).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> {
@@ -447,6 +444,32 @@ public class ExtraModelDiscoveryGoals
                         player.sendMessage(info, Util.NIL_UUID);
 
                         discoversData.discoverAllArmorPieceAndBroadcast(player, ModDynamicModels.Armor.SCOUT);
+                    }
+                }));
+
+        // Unlock BAGUETTE
+        TOAST_BREAD = registerGoal(
+            BetterModelUnlocks.of("toast_bread"),
+            new BlockUseGoal(net.blay09.mods.cookingforblockheads.block.ModBlocks.toaster, 1).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(data -> data.getState().hasProperty(DiscoverTriggeringBlock.DISCOVERED) &&
+                    !data.getState().getValue(DiscoverTriggeringBlock.DISCOVERED)).
+                withPredicate(data ->
+                    data.getWorld().getBlockEntity(data.getPos()) instanceof ToasterBlockEntity toasterBlock &&
+                        toasterBlock.isActive() && !toasterBlock.isBurningToast()).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId = ModDynamicModels.Wands.BAGUETTE.getId();
+
+                    if (!discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("Freshly toasted bread... nom!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(ModItems.WAND, modelId, player);
                     }
                 }));
     }
@@ -540,5 +563,10 @@ public class ExtraModelDiscoveryGoals
     /**
      * The goal for scout set.
      */
-    public static HunterAbilityGoal SCOUT_USE;
+    public static HunterAbilityGoal SCOUT_ARMOR;
+
+    /**
+     * The goal for using toaster.
+     */
+    public static BlockUseGoal TOAST_BREAD;
 }
