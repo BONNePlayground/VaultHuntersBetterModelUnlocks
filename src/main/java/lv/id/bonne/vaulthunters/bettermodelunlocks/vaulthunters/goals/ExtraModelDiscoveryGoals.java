@@ -34,6 +34,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.Pig;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.LecternBlockEntity;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
@@ -472,6 +474,32 @@ public class ExtraModelDiscoveryGoals
                         discoversData.discoverModelAndBroadcast(ModItems.WAND, modelId, player);
                     }
                 }));
+
+        // The glorem glipsum unlock
+        READ_BOOKS = registerGoal(
+            BetterModelUnlocks.of("read_books"),
+            new BlockUseGoal(Blocks.LECTERN, 1).
+                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(data -> data.getState().hasProperty(DiscoverTriggeringBlock.DISCOVERED) &&
+                    !data.getState().getValue(DiscoverTriggeringBlock.DISCOVERED)).
+                withPredicate(data ->
+                    data.getWorld().getBlockEntity(data.getPos()) instanceof LecternBlockEntity lectern &&
+                        lectern.hasBook()).
+                setReward((player, goal) ->
+                {
+                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
+                    ResourceLocation modelId = ModDynamicModels.Swords.GLOREM_GLIPSUM.getId();
+
+                    if (!discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
+                    {
+                        MutableComponent info =
+                            new TextComponent("These books looks interesting!").
+                                withStyle(ChatFormatting.GREEN);
+                        player.sendMessage(info, Util.NIL_UUID);
+
+                        discoversData.discoverModelAndBroadcast(ModItems.SWORD, modelId, player);
+                    }
+                }));
     }
 
 
@@ -569,4 +597,9 @@ public class ExtraModelDiscoveryGoals
      * The goal for using toaster.
      */
     public static BlockUseGoal TOAST_BREAD;
+
+    /**
+     * The goal for using lectern.
+     */
+    public static BlockUseGoal READ_BOOKS;
 }

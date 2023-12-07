@@ -13,7 +13,7 @@ Custom Unique Transmogs:
   - [ ] honey_drone 
 - Sword
   - [x] nightfall (experimental | BONNe) [drink vault potion 20 times in single vault] 
-  - [ ] glorem_glipsum (experimental | ArtemisKhros) [Place a book on a Lecturn in the Library]
+  - [x] glorem_glipsum (experimental | ArtemisKhros) [Read a book on a Lectern in the Library]
   - [ ] honey_wand (clear poison with honey bottle? | ProbablyNotDaniel) ??
   - [x] DEATHS_DOOR (fixed)
 - Axe

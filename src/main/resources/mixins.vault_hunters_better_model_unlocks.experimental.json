@@ -11,6 +11,7 @@
     "MixinCowVault",
     "MixinEffectCloudEntity",
     "MixinHunterAbility",
+    "MixinLecternBlock",
     "MixinSpawnVaultFighter",
     "MixinStructureTemplate",
     "MixinTauntRepealAbility",
