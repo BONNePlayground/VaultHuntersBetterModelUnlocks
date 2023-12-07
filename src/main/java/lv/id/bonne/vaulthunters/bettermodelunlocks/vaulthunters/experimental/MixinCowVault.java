@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
-import java.util.Optional;
 
 import iskallia.vault.VaultMod;
 import iskallia.vault.core.vault.Vault;
@@ -20,51 +19,44 @@ import iskallia.vault.core.vault.WorldManager;
 import iskallia.vault.core.vault.modifier.spi.VaultModifier;
 import iskallia.vault.core.world.storage.VirtualWorld;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.BetterModelUnlocks;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.utils.ExtraModFields;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.logic.CowMobLogic;
 
 
 /**
  * This mixin is used to mark vault as cow vault.
  */
-@Mixin(value = Vault.class, remap = false)
-public class MixinCowVault
+@Mixin(value = WorldManager.class, remap = false)
+public abstract class MixinCowVault
 {
-    /**
-     * Injects cow vault field.
-     * @param ci Callback info.
-     */
-    @Inject(method = "<init>", at = @At("TAIL"), remap = false)
-    private void injectCowField(CallbackInfo ci)
-    {
-        ((Vault) (Object) this).setIfAbsent(ExtraModFields.COW_VAULT, false);
-    }
-
-
     /**
      * Injects if vault is cow vault.
      * @param world Virtual world.
      * @param ci Callback info.
      */
-    @Inject(method = "initServer", at = @At("TAIL"), remap = false)
-    private void injectInitServer(VirtualWorld world, CallbackInfo ci)
+    @Inject(method = "initServer", at = @At(value = "INVOKE",
+        target = "Liskallia/vault/core/vault/WorldManager;ifPresent(Liskallia/vault/core/data/key/FieldKey;Ljava/util/function/Consumer;)V",
+        ordinal = 3),
+        remap = false)
+    private void injectInitServer(VirtualWorld world, Vault vault, CallbackInfo ci)
     {
+        // Check if experimental unlocks are enabled.
         if (!BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks())
         {
             // Only on experimental settings.
             return;
         }
 
-        if (((Vault) (Object) this).getOptional(Vault.WORLD).
-            map(manager -> manager.getOptional(WorldManager.THEME)).
-            map(optional -> optional.orElse(VaultMod.id("empty"))).
-            map(themeKey -> themeKey.equals(VaultMod.id("classic_vault_chaos"))).
-            orElse(false))
+        // Check the theme section. Only in chaos vaults.
+        if (!((WorldManager) (Object) this).getOptional(WorldManager.THEME).
+            orElse(VaultMod.id("empty")).
+            equals(VaultMod.id("classic_vault_chaos")))
         {
             // Only on chaos vaults.
             return;
         }
 
-        ((Vault) (Object) this).ifPresent(Vault.MODIFIERS, modifiers ->
+        // Now count modifiers.
+        vault.ifPresent(Vault.MODIFIERS, modifiers ->
         {
             List<VaultModifier<?>> modifierList = modifiers.getModifiers();
 
@@ -95,7 +87,9 @@ public class MixinCowVault
             // Mark vault as cow vault
             if (rapidCount >= 5 && furiousCount >= 5 && wildCount >= 5)
             {
-                ((Vault) (Object) this).setIfPresent(ExtraModFields.COW_VAULT, true);
+                // Change to CowMobLogic
+                ((WorldManager) (Object) this).
+                    setIfPresent(WorldManager.MOB_LOGIC, new CowMobLogic());
             }
         });
     }

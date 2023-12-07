@@ -9,7 +9,8 @@ package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.events;
 
 import iskallia.vault.core.event.CommonEvents;
 import iskallia.vault.core.event.Event;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import iskallia.vault.core.vault.VaultRegistry;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.logic.CowMobLogic;
 
 
 /**
@@ -21,6 +22,11 @@ public class ExtraCommonEvents
      * This event is fired when entity removes effect
      */
     public static final EntityFinisItemUseEvent FINISH_USE = register(new EntityFinisItemUseEvent());
+
+    /**
+     * This event is fired before entity is created via spawner.
+     */
+    public static final SpawnerEntityCreateEvent SPAWNER_ENTITY_CREATE = register(new SpawnerEntityCreateEvent());
 
 
     /**
@@ -39,5 +45,9 @@ public class ExtraCommonEvents
     /**
      * Just class init to trigger everything.
      */
-    public static void init() {}
+    public static void init()
+    {
+        // Adds cow logic to Vault Registry.
+        VaultRegistry.MOB_LOGIC.add(CowMobLogic.KEY);
+    }
 }

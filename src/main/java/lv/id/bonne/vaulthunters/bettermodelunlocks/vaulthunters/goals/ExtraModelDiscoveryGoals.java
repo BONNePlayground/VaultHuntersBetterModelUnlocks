@@ -11,6 +11,8 @@ import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
 import java.util.Map;
 import java.util.Random;
 
+import iskallia.vault.core.vault.Vault;
+import iskallia.vault.core.vault.WorldManager;
 import iskallia.vault.discoverylogic.goal.VaultCompletionGoal;
 import iskallia.vault.discoverylogic.goal.VaultMobKillGoal;
 import iskallia.vault.discoverylogic.goal.base.DiscoveryGoal;
@@ -19,7 +21,7 @@ import iskallia.vault.init.*;
 import iskallia.vault.item.gear.VaultArmorItem;
 import iskallia.vault.world.data.DiscoveredModelsData;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.BetterModelUnlocks;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.utils.ExtraModFields;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.logic.CowMobLogic;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.network.chat.MutableComponent;
@@ -387,7 +389,10 @@ public class ExtraModelDiscoveryGoals
             BetterModelUnlocks.of("cow_vault"),
             new VaultCompletionGoal().
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
-                withPredicate(data -> data.getVault().getOr(ExtraModFields.COW_VAULT, false)).
+                withPredicate(data -> data.getVault().getOptional(Vault.WORLD).
+                    map(manager -> manager.get(WorldManager.MOB_LOGIC)).
+                    map(logic -> logic instanceof CowMobLogic).
+                    orElse(false)).
                 setReward((player, goal) ->
                 {
                     if (DiscoveredModelsData.get(player.getLevel()).

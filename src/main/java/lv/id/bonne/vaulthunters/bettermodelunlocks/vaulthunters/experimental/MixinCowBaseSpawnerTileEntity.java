@@ -12,9 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 import iskallia.vault.block.entity.BaseSpawnerTileEntity;
-import iskallia.vault.init.ModEntities;
-import iskallia.vault.world.data.ServerVaults;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.utils.ExtraModFields;
+import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.events.ExtraCommonEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -54,17 +52,9 @@ public abstract class MixinCowBaseSpawnerTileEntity
         boolean p_20598_,
         boolean p_20599_)
     {
-        EntityType<?> returnInstance;
-
-        if (ServerVaults.get(serverLevel).map(vault -> vault.getOr(ExtraModFields.COW_VAULT, false)).orElse(false))
-        {
-            returnInstance = ModEntities.AGGRESSIVE_COW;
-        }
-        else
-        {
-            returnInstance = instance;
-        }
-
-        return returnInstance.spawn(serverLevel, itemStack, player, blockPos, spawnType, p_20598_, p_20599_);
+       return ExtraCommonEvents.SPAWNER_ENTITY_CREATE.
+           invoke(instance, serverLevel).
+           getEntityType().
+           spawn(serverLevel, itemStack, player, blockPos, spawnType, p_20598_, p_20599_);
     }
 }
