@@ -28,6 +28,11 @@ public class ExtraCommonEvents
      */
     public static final SpawnerEntityCreateEvent SPAWNER_ENTITY_CREATE = register(new SpawnerEntityCreateEvent());
 
+    /**
+     * This event is fired when player uses hunter ability.
+     */
+    public static final HunterAbilityUseEvent HUNTER_ABILITY_USE = register(new HunterAbilityUseEvent());
+
 
     /**
      * Register event to VH Common Event registry.

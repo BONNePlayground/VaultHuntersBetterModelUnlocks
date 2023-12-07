@@ -9,11 +9,11 @@ Custom Unique Transmogs:
   - [x] carrot_on_a_wand (experimental | BONNe) [kill 50 mobs while ridding a pig in the vault]
   - [x] carri_king (experimental | -Zushi-) [kill 5 bunfungus mobs in the vault]
 - Shield
-  - [ ] heart_chocolate (grab a chocolate from the vault | mefallit) ??
+  - [ ] heart_chocolate (grab a chocolate from the vault or Eat a chocolate covered berry in a Chocolate Theme vault | mefallit) ??
   - [ ] honey_drone 
 - Sword
   - [x] nightfall (experimental | BONNe) [drink vault potion 20 times in single vault] 
-  - [ ] glorem_glipsum 
+  - [ ] glorem_glipsum (experimental | ArtemisKhros) [Place a book on a Lecturn in the Library]
   - [ ] honey_wand (clear poison with honey bottle? | ProbablyNotDaniel) ??
   - [x] DEATHS_DOOR (fixed)
 - Axe
@@ -25,9 +25,9 @@ Custom Unique Transmogs:
   - [x] Bumbo Cactoni (experimental | *BONNe) [find a bumbo cactoni with gold teeth]
   - [x] hell_cow (experimental | BONNe) [finish cow vault: chaos vault with 5+ rappid, 5+ furious and 5+ wild modifiers]
   - [x] penguin (experimental | ProbablyNotDaniel) [kill 200/400 mobs while chilled and 50/100 while frozen in the vault]
-  - [ ] sweet_heart (something in sweet theme) ??
+  - [ ] sweet_heart (Try to harvest one of each (3) lollipops from sweet theme | ArtemisKhros) ??
   - [x] bee_knight (experimental | BONNe) [free 4 bees in the honey theme vault]
-  - [ ] scout (explore x number of rooms | -Zushi-) ??
+  - [x] scout (experimental | ArtemisKhros) [Use Hunter while Treasure goggles are equipped]
   - [x] jester (experimental | mefallit) [place all vault chests (except resource vault and altar)]
   - [ ] skallibomba
   - [ ] crayon_blue (speed run elixir -Zushi-) ??
