@@ -6,16 +6,13 @@
   "plugin": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.VaultHuntersExperimentalModConfiguration",
   "mixins": [
     "MixinBeeKnightObjective",
-    "MixinBlockKitchen",
     "MixinCowBaseSpawnerTileEntity",
     "MixinCowVault",
     "MixinEffectCloudEntity",
     "MixinHunterAbility",
-    "MixinLecternBlock",
     "MixinSpawnVaultFighter",
     "MixinStructureTemplate",
     "MixinTauntRepealAbility",
-    "MixinToasterBlock",
     "MixinVaultJewelApplicationStationMessage"
   ]
 }

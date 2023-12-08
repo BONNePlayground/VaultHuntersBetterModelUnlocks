@@ -17,10 +17,10 @@ import iskallia.vault.core.vault.DiscoveryGoalsManager;
 import iskallia.vault.core.vault.Vault;
 import iskallia.vault.core.world.storage.VirtualWorld;
 import iskallia.vault.discoverylogic.goal.base.InVaultDiscoveryGoal;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.events.ExtraCommonEvents;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.events.HunterAbilityUseEvent;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 
 /**
@@ -61,6 +61,26 @@ public class BlockUseGoal extends InVaultDiscoveryGoal<BlockUseGoal>
      */
     public void initServer(DiscoveryGoalsManager manager, VirtualWorld world, Vault vault)
     {
+        CommonEvents.ENTITY_PLACE.register(manager, event ->
+        {
+            if (event.getWorld() == world &&
+                event.getEntity() instanceof ServerPlayer &&
+                event.getPlacedBlock().getBlock() == this.block &&
+                event.getBlockSnapshot().getReplacedBlock().getBlock() != this.block)
+            {
+                BlockEntity blockEntity = event.getWorld().getBlockEntity(event.getPos());
+
+                // Add custom data to the block entity.
+                if (blockEntity != null)
+                {
+                    CompoundTag tag = new CompoundTag();
+                    tag.putBoolean("isPlaced", true);
+                    CompoundTag forgeTag = new CompoundTag();
+                    forgeTag.put("ForgeData", tag);
+                    blockEntity.load(forgeTag);
+                }
+            }
+        });
         CommonEvents.BLOCK_USE.
             in(world).
             at(BlockUseEvent.Phase.RETURN).
