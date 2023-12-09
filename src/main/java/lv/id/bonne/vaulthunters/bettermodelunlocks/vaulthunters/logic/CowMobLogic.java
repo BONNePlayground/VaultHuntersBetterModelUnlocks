@@ -35,6 +35,17 @@ public class CowMobLogic extends ClassicMobLogic
 
 
     /**
+     * This method is used to get key of the logic.
+     * @return The key of the logic.
+     */
+    @Override
+    public SupplierKey<MobLogic> getKey()
+    {
+        return KEY;
+    }
+
+
+    /**
      * This method is used to init server side logic.
      * @param world Virtual world.
      * @param vault Vault.

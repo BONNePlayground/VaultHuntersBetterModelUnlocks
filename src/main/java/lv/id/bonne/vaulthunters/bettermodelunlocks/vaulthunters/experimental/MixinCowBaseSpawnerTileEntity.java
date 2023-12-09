@@ -42,8 +42,9 @@ public abstract class MixinCowBaseSpawnerTileEntity
      */
     @Redirect(method = "spawnEntity",
         at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/EntityType;spawn(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/MobSpawnType;ZZ)Lnet/minecraft/world/entity/Entity;"))
-    private static Entity changeEntity(EntityType<?> instance,
+            target = "Lnet/minecraft/world/entity/EntityType;spawn(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/MobSpawnType;ZZ)Lnet/minecraft/world/entity/Entity;"),
+        remap = true)
+    private static Entity changeEntity(EntityType instance,
         ServerLevel serverLevel,
         ItemStack itemStack,
         Player player,
@@ -52,7 +53,7 @@ public abstract class MixinCowBaseSpawnerTileEntity
         boolean p_20598_,
         boolean p_20599_)
     {
-       return ExtraCommonEvents.SPAWNER_ENTITY_CREATE.
+        return ExtraCommonEvents.SPAWNER_ENTITY_CREATE.
            invoke(instance, serverLevel).
            getEntityType().
            spawn(serverLevel, itemStack, player, blockPos, spawnType, p_20598_, p_20599_);

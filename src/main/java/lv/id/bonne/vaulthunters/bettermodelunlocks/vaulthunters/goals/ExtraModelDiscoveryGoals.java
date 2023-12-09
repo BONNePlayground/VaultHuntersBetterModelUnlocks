@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
-import iskallia.vault.block.discoverable.DiscoverTriggeringBlock;
 import iskallia.vault.core.vault.Vault;
 import iskallia.vault.core.vault.WorldManager;
 import iskallia.vault.discoverylogic.goal.VaultCompletionGoal;
@@ -28,7 +27,6 @@ import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.logic.CowMobLogi
 import net.blay09.mods.cookingforblockheads.tile.ToasterBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -456,6 +454,9 @@ public class ExtraModelDiscoveryGoals
             BetterModelUnlocks.of("toast_bread"),
             new BlockUseGoal(net.blay09.mods.cookingforblockheads.block.ModBlocks.toaster, 1).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(data ->
+                    data.getWorld().getBlockEntity(data.getPos()) instanceof ToasterBlockEntity toasterBlock &&
+                        toasterBlock.isActive() && !toasterBlock.isBurningToast()).
                 withPredicate(data -> {
                     BlockEntity blockEntity = data.getWorld().getBlockEntity(data.getPos());
 
@@ -466,9 +467,6 @@ public class ExtraModelDiscoveryGoals
 
                     return true;
                 }).
-                withPredicate(data ->
-                    data.getWorld().getBlockEntity(data.getPos()) instanceof ToasterBlockEntity toasterBlock &&
-                        toasterBlock.isActive() && !toasterBlock.isBurningToast()).
                 setReward((player, goal) ->
                 {
                     DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
@@ -490,6 +488,9 @@ public class ExtraModelDiscoveryGoals
             BetterModelUnlocks.of("read_books"),
             new BlockUseGoal(Blocks.LECTERN, 1).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
+                withPredicate(data ->
+                    data.getWorld().getBlockEntity(data.getPos()) instanceof LecternBlockEntity lectern &&
+                        lectern.hasBook()).
                 withPredicate(data -> {
                     BlockEntity blockEntity = data.getWorld().getBlockEntity(data.getPos());
 
@@ -500,9 +501,6 @@ public class ExtraModelDiscoveryGoals
 
                     return true;
                 }).
-                withPredicate(data ->
-                    data.getWorld().getBlockEntity(data.getPos()) instanceof LecternBlockEntity lectern &&
-                        lectern.hasBook()).
                 setReward((player, goal) ->
                 {
                     DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());

@@ -9,8 +9,6 @@ package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.events;
 
 import iskallia.vault.core.event.CommonEvents;
 import iskallia.vault.core.event.Event;
-import iskallia.vault.core.vault.VaultRegistry;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.logic.CowMobLogic;
 
 
 /**
@@ -52,7 +50,7 @@ public class ExtraCommonEvents
      */
     public static void init()
     {
-        // Adds cow logic to Vault Registry.
-        VaultRegistry.MOB_LOGIC.add(CowMobLogic.KEY);
+        // Adds cow logic to Vault Registry. This breaks clients without mod!
+//        VaultRegistry.MOB_LOGIC.add(CowMobLogic.KEY);
     }
 }
