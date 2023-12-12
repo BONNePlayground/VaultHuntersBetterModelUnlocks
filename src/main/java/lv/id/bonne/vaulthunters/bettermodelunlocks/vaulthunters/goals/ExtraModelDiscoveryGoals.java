@@ -254,7 +254,7 @@ public class ExtraModelDiscoveryGoals
             new VaultMobKillGoal(50).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
-                withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.FREEZE)).
+                withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.GLACIAL_SHATTER)).
                 setReward((player, goal) ->
                 {
                     DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
@@ -281,7 +281,7 @@ public class ExtraModelDiscoveryGoals
             new VaultMobKillGoal(100).
                 withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
                 withPredicate(e -> e.getEntityLiving() instanceof Mob).
-                withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.FREEZE)).
+                withPredicate(e -> e.getEntityLiving().hasEffect(ModEffects.GLACIAL_SHATTER)).
                 setReward((player, goal) ->
                 {
                     DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
