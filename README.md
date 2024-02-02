@@ -12,7 +12,7 @@ Custom Unique Transmogs:
   - [ ] heart_chocolate (grab a chocolate from the vault or Eat a chocolate covered berry in a Chocolate Theme vault | mefallit) ??
   - [ ] honey_drone 
 - Sword
-  - [x] nightfall (experimental | BONNe) [drink vault potion 20 times in single vault] 
+  - ~~[x] nightfall (experimental | BONNe) [drink vault potion 20 times in single vault]~~
   - [x] glorem_glipsum (experimental | ArtemisKhros) [Read a book on a Lectern in the Library]
   - [ ] honey_wand (clear poison with honey bottle? | ProbablyNotDaniel) ??
   - ~~[x] DEATHS_DOOR (fixed)~~

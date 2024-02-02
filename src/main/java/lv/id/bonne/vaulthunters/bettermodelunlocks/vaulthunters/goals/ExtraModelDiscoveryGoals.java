@@ -142,26 +142,6 @@ public class ExtraModelDiscoveryGoals
                         discoversData.discoverAllArmorPieceAndBroadcast(player, ModDynamicModels.Armor.JESTER);
                     }
                 }));
-        // unlock nightfall sword
-        NIGHTFALL_DRINKING = registerGoal(
-            BetterModelUnlocks.of("potion_nightfall"),
-            new PotionUseGoal(20).
-                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
-                setReward((player, goal) ->
-                {
-                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
-                    ResourceLocation modelId = ModDynamicModels.Swords.NIGHTFALL.getId();
-
-                    if (!discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
-                    {
-                        MutableComponent info =
-                            new TextComponent("So much potion, so close to intoxicating!").
-                                withStyle(ChatFormatting.GREEN);
-                        player.sendMessage(info, Util.NIL_UUID);
-
-                        discoversData.discoverModelAndBroadcast(ModItems.SWORD, modelId, player);
-                    }
-                }));
         // unlock cow armor set
         COW_VAULT = registerGoal(
             BetterModelUnlocks.of("cow_vault"),
