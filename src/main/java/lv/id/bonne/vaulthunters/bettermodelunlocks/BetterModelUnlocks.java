@@ -2,11 +2,9 @@ package lv.id.bonne.vaulthunters.bettermodelunlocks;
 
 
 import lv.id.bonne.vaulthunters.bettermodelunlocks.config.Configuration;
-import lv.id.bonne.vaulthunters.bettermodelunlocks.events.AnvilRepairEventListener;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.events.ExtraCommonEvents;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.goals.ExtraModelDiscoveryGoals;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -30,7 +28,6 @@ public class BetterModelUnlocks
             MOD_ID + ".toml");
 
         // Register event listeners.
-        MinecraftForge.EVENT_BUS.register(AnvilRepairEventListener.class);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
     }
 
