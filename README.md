@@ -17,7 +17,7 @@ Custom Unique Transmogs:
   - [ ] honey_wand (clear poison with honey bottle? | ProbablyNotDaniel) ??
   - ~~[x] DEATHS_DOOR (fixed)~~
 - Axe
-  - [x] greathammer (experimental | mefallit) [craft 7 size hammer]
+  - ~~[x] greathammer (experimental | mefallit) [craft 7 size hammer]~~
   - [ ] tiny_hammer 
 - Armor
   - [x] iskall_ibe (fixed)

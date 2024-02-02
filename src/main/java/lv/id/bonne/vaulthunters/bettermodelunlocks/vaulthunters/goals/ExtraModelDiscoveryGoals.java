@@ -30,9 +30,7 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.Pig;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.LecternBlockEntity;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
@@ -71,26 +69,6 @@ public class ExtraModelDiscoveryGoals
                     }
                 }));
 
-
-        MAX_HAMMER_SIZE = registerGoal(
-            BetterModelUnlocks.of("max_hammer_size"),
-            new JewelApplicationGoal(ModGearAttributes.HAMMER_SIZE, 7).
-                withPredicate(e -> BetterModelUnlocks.CONFIGURATION.getExperimentalUnlocks()).
-                setReward((player, goal) ->
-                {
-                    DiscoveredModelsData discoversData = DiscoveredModelsData.get(player.getLevel());
-                    ResourceLocation modelId = ModDynamicModels.Axes.GREATHAMMER.getId();
-
-                    if (!discoversData.getDiscoveredModels(player.getUUID()).contains(modelId))
-                    {
-                        MutableComponent info =
-                            new TextComponent("You have applied max hammer size!").
-                                withStyle(ChatFormatting.GREEN);
-                        player.sendMessage(info, Util.NIL_UUID);
-
-                        discoversData.discoverModelAndBroadcast(ModItems.AXE, modelId, player);
-                    }
-                }));
         KILL_BUNFUNGUS = registerGoal(
             BetterModelUnlocks.of("bunfungus_killed"),
             new VaultMobKillGoal(5).
@@ -252,11 +230,6 @@ public class ExtraModelDiscoveryGoals
      * The goal for killing mobs while riding a pig to get CARROT_ON_A_WAND model.
      */
     public static VaultMobKillGoal MOBS_KILLED_WHILE_RIDING_PIG;
-
-    /**
-     * The goal for getting max Hammer Size Tool
-     */
-    public static JewelApplicationGoal MAX_HAMMER_SIZE;
 
     /**
      * The goal for killing 5 bunfungus mobs.
