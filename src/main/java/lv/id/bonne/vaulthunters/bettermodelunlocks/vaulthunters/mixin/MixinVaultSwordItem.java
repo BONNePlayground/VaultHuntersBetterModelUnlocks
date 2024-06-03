@@ -8,17 +8,10 @@ package lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.mixin;
 
 
 import org.spongepowered.asm.mixin.*;
-import java.util.Set;
 
-import iskallia.vault.gear.GearRollHelper;
-import iskallia.vault.gear.VaultGearRarity;
-import iskallia.vault.gear.data.VaultGearData;
 import iskallia.vault.gear.item.VaultGearItem;
-import iskallia.vault.init.ModConfigs;
-import iskallia.vault.init.ModGearAttributes;
 import iskallia.vault.item.gear.VaultSwordItem;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.utils.GearHelper;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -55,19 +48,6 @@ public abstract class MixinVaultSwordItem
             return;
         }
 
-        VaultGearData data = VaultGearData.read(stack);
-
-        VaultGearRarity rarity = data.getFirstValue(ModGearAttributes.GEAR_ROLL_TYPE).
-            flatMap((rollTypeStr) -> ModConfigs.VAULT_GEAR_TYPE_CONFIG.getRollPool(rollTypeStr)).
-            orElse(ModConfigs.VAULT_GEAR_TYPE_CONFIG.getDefaultRoll()).
-            getRandom(GearRollHelper.rand);
-
-        // Get all possible models for this item
-        Set<ResourceLocation> gearModelIDs =
-            ModConfigs.GEAR_MODEL_ROLL_RARITIES.getPossibleRolls(((VaultSwordItem) (Object) this),
-                rarity,
-                this.getIntendedSlot(stack));
-
-        GearHelper.modelUnlockHelper(stack, serverPlayer, gearModelIDs, rarity, data);
+        GearHelper.modelUnlockHelper(stack, serverPlayer, this.getIntendedSlot(stack));
     }
 }

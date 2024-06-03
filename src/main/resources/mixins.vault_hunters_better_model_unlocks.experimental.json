@@ -13,7 +13,6 @@
     "MixinHunterAbility",
     "MixinSpawnVaultFighter",
     "MixinStructureTemplate",
-    "MixinTauntRepealAbility",
-    "MixinVaultJewelApplicationStationMessage"
+    "MixinTauntRepealAbility"
   ]
 }

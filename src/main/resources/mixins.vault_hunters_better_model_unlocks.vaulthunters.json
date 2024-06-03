@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "plugin": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.VaultHuntersIntegrationModConfiguration",
   "mixins": [
+    "GearModelRollRaritiesConfigAccessor",
     "MixinVaultArmorItem",
     "MixinVaultAxeItem",
     "MixinVaultShieldItem",
