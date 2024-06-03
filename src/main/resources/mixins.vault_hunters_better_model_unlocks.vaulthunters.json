@@ -6,6 +6,7 @@
   "plugin": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.VaultHuntersIntegrationModConfiguration",
   "mixins": [
     "GearModelRollRaritiesConfigAccessor",
+    "MixinFocusItem",
     "MixinVaultArmorItem",
     "MixinVaultAxeItem",
     "MixinVaultShieldItem",

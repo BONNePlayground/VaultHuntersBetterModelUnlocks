@@ -25,6 +25,6 @@ import net.minecraft.world.item.ItemStack;
 @Mixin(GearModelRollRaritiesConfig.class)
 public interface GearModelRollRaritiesConfigAccessor
 {
-    @Invoker
+    @Invoker(value = "getPossibleRolls")
     Set<ResourceLocation> callGetPossibleRolls(ItemStack stack, VaultGearData data, EquipmentSlot slot);
 }
