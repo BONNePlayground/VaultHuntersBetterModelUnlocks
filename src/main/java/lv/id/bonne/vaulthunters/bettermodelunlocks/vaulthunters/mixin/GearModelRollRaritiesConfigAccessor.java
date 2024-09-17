@@ -22,7 +22,7 @@ import net.minecraft.world.item.ItemStack;
 /**
  * Accessor to the new VH gear method.
  */
-@Mixin(GearModelRollRaritiesConfig.class)
+@Mixin(value = GearModelRollRaritiesConfig.class, remap = false)
 public interface GearModelRollRaritiesConfigAccessor
 {
     @Invoker(value = "getPossibleRolls")
