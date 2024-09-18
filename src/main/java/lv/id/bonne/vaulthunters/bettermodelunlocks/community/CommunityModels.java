@@ -69,4 +69,14 @@ public class CommunityModels
                     allowTransmogrification().
                     discoverOnRoll());
     }
+
+    public static class Shields
+    {
+        // bumbo_cutout model by breadcrumb5550
+        public static final PlainItemModel BUMBO_CUTOUT =
+            new PlainItemModel(BetterModelUnlocks.of("gear/shield/bumbo_cutout"), "Bumbo Cutout").
+                properties(new DynamicModelProperties().
+                    allowTransmogrification().
+                    discoverOnRoll());
+    }
 }
