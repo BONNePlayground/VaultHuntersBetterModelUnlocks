@@ -32,5 +32,6 @@ public class MixinModDynamicModelsWands
     private static void injectClientModels(CallbackInfo ci)
     {
         REGISTRY.register(CommunityModels.Wands.LEEK);
+        REGISTRY.register(CommunityModels.Wands.MADNESS);
     }
 }

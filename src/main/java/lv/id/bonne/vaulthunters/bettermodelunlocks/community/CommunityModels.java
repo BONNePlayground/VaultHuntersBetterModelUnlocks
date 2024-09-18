@@ -26,6 +26,13 @@ public class CommunityModels
                 properties(new DynamicModelProperties().
                     allowTransmogrification().
                     discoverOnRoll());
+
+        // madness model by breadcrumb5550
+        public static final PlainItemModel MADNESS =
+            new PlainItemModel(BetterModelUnlocks.of("gear/wand/madness"), "Madness").
+                properties(new DynamicModelProperties().
+                    allowTransmogrification().
+                    discoverOnRoll());
     }
 
     public static class Axes
