@@ -61,5 +61,12 @@ public class CommunityModels
                 properties(new DynamicModelProperties().
                     allowTransmogrification().
                     discoverOnRoll());
+
+        // slime_buster model by breadcrumb5550
+        public static final PlainItemModel SLIME_BUSTER =
+            new PlainItemModel(BetterModelUnlocks.of("gear/sword/slime_buster"), "Slime Buster").
+                properties(new DynamicModelProperties().
+                    allowTransmogrification().
+                    discoverOnRoll());
     }
 }

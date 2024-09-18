@@ -34,5 +34,6 @@ public class MixinModDynamicModelsSwords
         REGISTRY.register(CommunityModels.Swords.GLIZZY_GLADIUS);
         REGISTRY.register(CommunityModels.Swords.SLICE_OF_CHEESE);
         REGISTRY.register(CommunityModels.Swords.LUTER_BOI);
+        REGISTRY.register(CommunityModels.Swords.SLIME_BUSTER);
     }
 }
