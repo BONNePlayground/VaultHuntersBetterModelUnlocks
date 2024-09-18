@@ -54,5 +54,12 @@ public class CommunityModels
                 properties(new DynamicModelProperties().
                     allowTransmogrification().
                     discoverOnRoll());
+
+        // luter boi model by breadcrumb5550
+        public static final PlainItemModel LUTER_BOI =
+            new PlainItemModel(BetterModelUnlocks.of("gear/sword/luter_boi"), "Luter Boi").
+                properties(new DynamicModelProperties().
+                    allowTransmogrification().
+                    discoverOnRoll());
     }
 }

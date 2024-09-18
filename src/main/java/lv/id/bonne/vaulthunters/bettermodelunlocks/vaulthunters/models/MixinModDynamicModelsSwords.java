@@ -32,5 +32,7 @@ public class MixinModDynamicModelsSwords
     private static void injectClientModels(CallbackInfo ci)
     {
         REGISTRY.register(CommunityModels.Swords.GLIZZY_GLADIUS);
+        REGISTRY.register(CommunityModels.Swords.SLICE_OF_CHEESE);
+        REGISTRY.register(CommunityModels.Swords.LUTER_BOI);
     }
 }
