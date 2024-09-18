@@ -26,4 +26,13 @@ public class CommunityModels
                 allowTransmogrification().
                 discoverOnRoll());
     }
+
+    public static class Axes
+    {
+        // skallianchor model by breadcrumb5550
+        public static final PlainItemModel SKALLIANCHOR = new PlainItemModel(BetterModelUnlocks.of("gear/axe/skallianchor"), "Skallianchor").
+            properties(new DynamicModelProperties().
+                allowTransmogrification().
+                discoverOnRoll());
+    }
 }
