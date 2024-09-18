@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import iskallia.vault.dynamodel.model.item.HandHeldModel;
 import iskallia.vault.dynamodel.model.item.PlainItemModel;
 import iskallia.vault.dynamodel.registry.DynamicModelRegistry;
 import iskallia.vault.init.ModDynamicModels;
@@ -25,7 +26,7 @@ public class MixinModDynamicModelsAxes
 {
     @Shadow
     @Final
-    public static DynamicModelRegistry<PlainItemModel> REGISTRY;
+    public static DynamicModelRegistry<HandHeldModel> REGISTRY;
 
 
     @Inject(method = "<clinit>", at = @At(value = "TAIL"))

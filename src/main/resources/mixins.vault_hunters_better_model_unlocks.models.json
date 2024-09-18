@@ -4,7 +4,9 @@
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",
   "plugin": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.VaultHuntersModelsModConfiguration",
-  "mixins": [
+  "client": [
+    "MixinModDynamicModelsArmor",
+    "MixinModDynamicModelsAxes",
     "MixinModDynamicModelsShields",
     "MixinModDynamicModelsSwords",
     "MixinModDynamicModelsWands"

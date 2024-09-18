@@ -14,25 +14,22 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import iskallia.vault.dynamodel.model.item.HandHeldModel;
-import iskallia.vault.dynamodel.model.item.PlainItemModel;
-import iskallia.vault.dynamodel.model.item.shield.ShieldModel;
-import iskallia.vault.dynamodel.registry.DynamicModelRegistry;
+import iskallia.vault.dynamodel.registry.ArmorPieceModelRegistry;
 import iskallia.vault.init.ModDynamicModels;
 import lv.id.bonne.vaulthunters.bettermodelunlocks.community.CommunityModels;
 
 
-@Mixin(value = ModDynamicModels.Shields.class, remap = false)
-public class MixinModDynamicModelsShields
+@Mixin(value = ModDynamicModels.Armor.class, remap = false)
+public class MixinModDynamicModelsArmor
 {
     @Shadow
     @Final
-    public static DynamicModelRegistry<ShieldModel> REGISTRY;
+    public static ArmorPieceModelRegistry PIECE_REGISTRY;
 
 
     @Inject(method = "<clinit>", at = @At(value = "TAIL"))
     private static void injectClientModels(CallbackInfo ci)
     {
-        REGISTRY.register(CommunityModels.Shields.BUMBO_CUTOUT);
+        PIECE_REGISTRY.registerAll(CommunityModels.Armor.SHENANIGANS);
     }
 }
