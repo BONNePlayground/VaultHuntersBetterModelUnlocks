@@ -22,7 +22,7 @@ Custom Unique Transmogs:
 - Armor
   - [x] iskall_ibe (fixed)
   - ~~[x] cake (fixed)~~
-  - [x] Bumbo Cactoni (experimental | *BONNe) [find a bumbo cactoni with gold teeth]
+  - ~~[x] Bumbo Cactoni (experimental | *BONNe) [find a bumbo cactoni with gold teeth]~~
   - [x] hell_cow (experimental | BONNe) [finish cow vault: chaos vault with 5+ rappid, 5+ furious and 5+ wild modifiers]
   - ~~[x] penguin (experimental | ProbablyNotDaniel) [kill 200/400 mobs while chilled and 50/100 while frozen in the vault]~~
   - [ ] sweet_heart (Try to harvest one of each (3) lollipops from sweet theme | ArtemisKhros) ??
