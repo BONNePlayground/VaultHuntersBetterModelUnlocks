@@ -22,14 +22,14 @@ public class CommunityModels
     {
         // Leek model by gaymersalsa
         public static final PlainItemModel LEEK =
-            new PlainItemModel(BetterModelUnlocks.of("gear/wand/leek"), "Leek Wand").
+            new PlainItemModel(BetterModelUnlocks.of("gear/wand/leek"), "Leek").
                 properties(new DynamicModelProperties().
                     allowTransmogrification().
                     discoverOnRoll());
 
         // madness model by breadcrumb5550
-        public static final PlainItemModel MADNESS =
-            new PlainItemModel(BetterModelUnlocks.of("gear/wand/madness"), "Madness").
+        public static final PlainItemModel MADNESS_WAND =
+            new PlainItemModel(BetterModelUnlocks.of("gear/wand/madness"), "Madness Wand").
                 properties(new DynamicModelProperties().
                     allowTransmogrification().
                     discoverOnRoll());
