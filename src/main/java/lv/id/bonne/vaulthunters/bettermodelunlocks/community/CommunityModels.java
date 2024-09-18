@@ -35,4 +35,14 @@ public class CommunityModels
                 allowTransmogrification().
                 discoverOnRoll());
     }
+
+
+    public static class Swords
+    {
+        // glizzy gladius model by breadcrumb5550
+        public static final PlainItemModel GLIZZY_GLADIUS = new PlainItemModel(BetterModelUnlocks.of("gear/sword/glizzy_gladius"), "Glizzy Gladius").
+            properties(new DynamicModelProperties().
+                allowTransmogrification().
+                discoverOnRoll());
+    }
 }

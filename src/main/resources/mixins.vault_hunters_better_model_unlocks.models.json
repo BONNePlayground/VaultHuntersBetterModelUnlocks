@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "plugin": "lv.id.bonne.vaulthunters.bettermodelunlocks.vaulthunters.VaultHuntersModelsModConfiguration",
   "mixins": [
+    "MixinModDynamicModelsSwords",
     "MixinModDynamicModelsWands"
   ]
 }
