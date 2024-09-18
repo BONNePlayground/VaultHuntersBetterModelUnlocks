@@ -37,7 +37,7 @@ public class CommunityModels
 
         // madness model by breadcrumb5550
         public static final PlainItemModel MADNESS_WAND =
-            new PlainItemModel(BetterModelUnlocks.of("gear/wand/madness_wand"), "Madness Wand").
+            new PlainItemModel(BetterModelUnlocks.of("gear/wand/madness_wand"), "pijudabra1grkarm").
                 properties(new DynamicModelProperties().
                     allowTransmogrification().
                     discoverOnRoll());
@@ -50,7 +50,7 @@ public class CommunityModels
     public static class Armor
     {
         // Armor model shenanigans by breadcrumb5550
-        public static final ArmorModel SHENANIGANS = new ArmorModel(BetterModelUnlocks.of("gear/armor/shenanigans"), "Shenanigans").
+        public static final ArmorModel SHENANIGANS = new ArmorModel(BetterModelUnlocks.of("gear/armor/shenanigans"), "bAYuOGothquac").
             properties((new DynamicModelProperties()).allowTransmogrification().discoverOnRoll()).
             usingLayers(new ShenanigansArmorLayers()).
             addSlot(EquipmentSlot.HEAD).
