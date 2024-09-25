@@ -1,7 +1,36 @@
 # Vault Hunters Better Transmog Unlocks
 
-This is a simple server side mod improves vault gear transmog unlocks. 
-Gear transmogs will be unlocked similarly to the trinkets: smaller chance for unlocked transmogs.
+This mod had 3 main functions:
+- changes how unknown transmogs are unlocked by applying the same logic as it is for trinkets
+- adds community models into game
+- adds experimental unlocks for some models.
+
+## Community Transmogs
+
+Community transmogs by default will be in `common` rolls. You can change their roll rarity by adding them in your desired rarity in:
+`/config/the_vault/gear_model_roll_rarities.json`. Each model comes with ID that you need to use in the config file.
+
+Community added Transmogs:
+- Axes:
+  - Skallianchor _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/axe/skallianchor`
+- Armors:
+  - bAYuOGothquac _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/armor/shenanigans`
+- Swords:
+  - Glizzy Gladius _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/sword/glizzy_gladius`
+  - Slice of Cheese _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/sword/slice_of_cheese`
+  - Luter Boi _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/sword/luter_boi`
+  - Slime Buster _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/sword/slime_buster`
+- Shields:
+  - Bumbo Cutout _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/shield/bumbo_cutout`
+- Focus:
+  - ToemDenuroLaSiAn _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/focus/madness_focus`
+- Wands:
+  - Leek _by gaymersalsa_. ID: `vault_hunters_better_model_unlocks:gear/wand/leek`
+  - pijudabra1grkarm _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/wand/madness_wand`
+
+## Experimental Unlocks
+
+Experimental Model Unlock mechanisms. These can be enabled in config by toggling experimental unlocks. By default, they are disabled.
 
 Custom Unique Transmogs:
 - Wand
@@ -12,19 +41,12 @@ Custom Unique Transmogs:
   - [ ] heart_chocolate (grab a chocolate from the vault or Eat a chocolate covered berry in a Chocolate Theme vault | mefallit) ??
   - [ ] honey_drone 
 - Sword
-  - ~~[x] nightfall (experimental | BONNe) [drink vault potion 20 times in single vault]~~
-  - ~~[x] glorem_glipsum (experimental | ArtemisKhros) [Read a book on a Lectern in the Library]~~
   - [ ] honey_wand (clear poison with honey bottle? | ProbablyNotDaniel) ??
-  - ~~[x] DEATHS_DOOR (fixed)~~
 - Axe
-  - ~~[x] greathammer (experimental | mefallit) [craft 7 size hammer]~~
   - [ ] tiny_hammer 
 - Armor
   - [x] iskall_ibe (fixed)
-  - ~~[x] cake (fixed)~~
-  - ~~[x] Bumbo Cactoni (experimental | *BONNe) [find a bumbo cactoni with gold teeth]~~
   - [x] hell_cow (experimental | BONNe) [finish cow vault: chaos vault with 5+ rappid, 5+ furious and 5+ wild modifiers]
-  - ~~[x] penguin (experimental | ProbablyNotDaniel) [kill 200/400 mobs while chilled and 50/100 while frozen in the vault]~~
   - [ ] sweet_heart (Try to harvest one of each (3) lollipops from sweet theme | ArtemisKhros) ??
   - [x] bee_knight (experimental | BONNe) [free 4 bees in the honey theme vault]
   - [x] scout (experimental | ArtemisKhros) [Use Hunter while Treasure goggles are equipped]
@@ -34,4 +56,3 @@ Custom Unique Transmogs:
   - [ ] crayon_green (speed run monolith -Zushi-) ??
   - [ ] crayon_red (speed run guardian -Zushi-) ??
   - [ ] crayon_yellow  (speed run scavenger -Zushi-) ??
-  - ~~[x] scarecrow (experimental | karthavya) [apply fear effect to 200/400/600/800 mobs in the vault]~~
