@@ -121,4 +121,18 @@ public class CommunityModels
                     allowTransmogrification().
                     discoverOnRoll());
     }
+
+
+    /**
+     * This class holds community focus models
+     */
+    public static class Focus
+    {
+        // madness model by breadcrumb5550
+        public static final PlainItemModel MADNESS_FOCUS =
+            new PlainItemModel(BetterModelUnlocks.of("gear/focus/madness_focus"), "ToemDenuroLaSiAn").
+                properties(new DynamicModelProperties().
+                    allowTransmogrification().
+                    discoverOnRoll());
+    }
 }

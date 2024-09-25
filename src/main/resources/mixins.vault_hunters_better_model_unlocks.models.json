@@ -9,6 +9,7 @@
     "MixinModDynamicModelsAxes",
     "MixinModDynamicModelsShields",
     "MixinModDynamicModelsSwords",
-    "MixinModDynamicModelsWands"
+    "MixinModDynamicModelsWands",
+    "MixinModDynamicModelsFocus"
   ]
 }
