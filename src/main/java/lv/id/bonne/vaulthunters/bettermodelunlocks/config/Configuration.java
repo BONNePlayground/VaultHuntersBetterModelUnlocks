@@ -23,22 +23,22 @@ public class Configuration
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
 
         this.punishmentValue = builder.
-            comment("The punishment value for already known vault gear model.").
-            comment("Setting value to 1 would disable this feature.").
-            comment("Trinkets has value 1.0").
+            comment("The punishment value for already known vault gear model.",
+                "Setting value to 1 would disable this feature.",
+                "Trinkets has value 0.16666667F").
             defineInRange("knownModelPunishment", 1.0, 0.001, 1.0d);
 
         builder.comment("This category holds options that are experimental and not-canon.");
         builder.push("Experimental Unlocks");
 
         this.experimentalUnlocks = builder.
-            comment("The option to enable experimental, non-canon gear model unlocks.").
-            comment("By default it is disabled.").
+            comment("The option to enable experimental, non-canon gear model unlocks.",
+                "By default it is disabled.").
             define("experimentalUnlocks", false);
 
         this.chanceToSpawnPig = builder.
-            comment("The chance to spawn pig when spawning vault fighter.").
-            comment("By default it is 1%.").
+            comment("The chance to spawn pig when spawning vault fighter.",
+                "By default it is 1%.").
             defineInRange("chanceToSpawnPig", 0.01F, 0.0F, 1.0F);
 
         builder.pop();
