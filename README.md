@@ -13,6 +13,7 @@ Community transmogs by default will be in `common` rolls. You can change their r
 Community added Transmogs:
 - Axes:
   - Skallianchor _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/axe/skallianchor`
+  - jogltaurmawipeirja _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/axe/madness_axe`
 - Armors:
   - bAYuOGothquac _by breadcrumb5550_. ID: `vault_hunters_better_model_unlocks:gear/armor/shenanigans`
 - Swords:

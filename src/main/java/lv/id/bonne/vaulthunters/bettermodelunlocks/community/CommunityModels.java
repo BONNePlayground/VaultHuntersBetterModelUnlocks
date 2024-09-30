@@ -71,6 +71,13 @@ public class CommunityModels
                 properties(new DynamicModelProperties().
                     allowTransmogrification().
                     discoverOnRoll());
+
+        // jogltaurmawipeirja model by breadcrumb5550
+        public static final HandHeldModel MADNESS_AXE =
+            new HandHeldModel(BetterModelUnlocks.of("gear/axe/madness_axe"), "Jogltaurmawipeirja").
+                properties(new DynamicModelProperties().
+                    allowTransmogrification().
+                    discoverOnRoll());
     }
 
 

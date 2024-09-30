@@ -33,5 +33,6 @@ public class MixinModDynamicModelsAxes
     private static void injectClientModels(CallbackInfo ci)
     {
         REGISTRY.register(CommunityModels.Axes.SKALLIANCHOR);
+        REGISTRY.register(CommunityModels.Axes.MADNESS_AXE);
     }
 }
